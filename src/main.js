@@ -112,14 +112,14 @@ const toggleWindow = () => {
 const showWindow = () => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3001');
+  window.loadURL('http://localhost:3003');
   window.show();
 };
 
 const showHelp = () => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3001');
+  window.loadURL('http://localhost:3003');
   window.show();
 };
 
