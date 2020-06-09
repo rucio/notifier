@@ -75,7 +75,7 @@ function Navbar() {
             onChange={handleChange}
             aria-label="ant example"
           >
-            <AntTab label="Activity" component={Link} to="/content" />
+            <AntTab label="Activity" component={Link} to="/recent" />
             <AntTab
               label="Notifications"
               component={Link}
