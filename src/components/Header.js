@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import SettingsIcon from "@material-ui/icons/Settings";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import ExploreIcon from "@material-ui/icons/Explore";
 import "./ruciosq.png";
 
 const useStyles = makeStyles(theme => ({
@@ -46,9 +45,6 @@ export default function Header() {
         <Toolbar className={classes.toolbar}>
           <img src="./ruciosq.png" alt="logo" style={imgStyle} />
           <Typography className={classes.title} noWrap />
-          <IconButton aria-label="explorer" color="inherit">
-            <ExploreIcon />
-          </IconButton>
           <IconButton aria-label="settings" color="inherit">
             <SettingsIcon />
           </IconButton>

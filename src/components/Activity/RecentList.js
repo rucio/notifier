@@ -7,7 +7,7 @@ import MessageItem from "./MessageItem";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 320,
+    width: "100%",
   },
   demo: {
     backgroundColor: "#fffafa",
@@ -18,24 +18,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const spanStyle = {
-  last: {
-    fontFamily: "Cern, sans-serif",
-    fontWeight: 500,
-    fontSize: 14,
-    color: "#000000",
-    opacity: 0.6,
-  },
-  today: {
     fontFamily: "Cern, sans-serif",
     color: "#3e55ab",
     fontWeight: 700,
     fontSize: 24,
-  },
 };
-
-const listStyles = makeStyles({
-  root: {},
-});
 
 export default function RecentList(props) {
   const [messages, setMessages] = useState([]);
@@ -59,19 +46,13 @@ export default function RecentList(props) {
     />
   ));
 
-  const listStyle = listStyles();
-
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
         <Grid item md={12}>
-          <span
-            style={spanStyle.today}
-          >
-            {props.title}
-          </span>
+          <span style={spanStyle}> {props.title} </span>
           <div className={classes.demo}>
-            <List className={listStyle}>{allMessages}</List>
+            <List dense='false'>{allMessages}</List>
           </div>
         </Grid>
       </Grid>

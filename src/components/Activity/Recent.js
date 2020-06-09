@@ -24,7 +24,7 @@ function Recent() {
         m={1}
         bgcolor="#fffafa"
         color="#212121"
-        css={{ maxWidth: 360, height: 180 }}
+        css={{ maxWidth: 360, height: "100%" }}
       >
         <RecentList title="Recent Activity" />
       </Box>
