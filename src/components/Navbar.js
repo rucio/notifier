@@ -11,15 +11,15 @@ import Typography from "@material-ui/core/Typography";
 // https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/tabs/CustomizedTabs.js
 const AntTabs = withStyles({
   root: {
-    borderBottom: "1px solid #e8e8e8"
+    borderBottom: "1px solid #e8e8e8",
   },
   indicator: {
     backgroundColor: "lightblue",
-    minHeight: 5
-  }
+    minHeight: 5,
+  },
 })(Tabs);
 
-const AntTab = withStyles(theme => ({
+const AntTab = withStyles((theme) => ({
   root: {
     textTransform: "none",
     minWidth: 72,
@@ -32,30 +32,30 @@ const AntTab = withStyles(theme => ({
     fontSize: 14,
     "&:hover": {
       color: "lightblue",
-      opacity: 0.8
+      opacity: 0.8,
     },
     "&$selected": {
       color: "#ffffff",
-      fontWeight: theme.typography.fontWeightBold
+      fontWeight: theme.typography.fontWeightBold,
     },
     "&:focus": {
-      color: "#ffffff"
-    }
+      color: "#ffffff",
+    },
   },
-  selected: {}
-}))(props => <Tab disableRipple {...props} />);
+  selected: {},
+}))((props) => <Tab disableRipple {...props} />);
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   padding: {
     padding: theme.spacing(0.5),
-    backgroundColor: "#fffafa"
+    backgroundColor: "#fffafa",
   },
   demo1: {
-    backgroundColor: "#3e55ab"
-  }
+    backgroundColor: "#3e55ab",
+  },
 }));
 
 function Navbar() {
@@ -75,7 +75,7 @@ function Navbar() {
             onChange={handleChange}
             aria-label="ant example"
           >
-            <AntTab label="Activity" component={Link} to="/recent" />
+            <AntTab label="Activity" component={Link} to="/content" />
             <AntTab
               label="Notifications"
               component={Link}

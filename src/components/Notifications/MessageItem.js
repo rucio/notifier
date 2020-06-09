@@ -6,42 +6,50 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
-import FolderIcon from "@material-ui/icons/Folder";
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import ClearIcon from "@material-ui/icons/Clear";
 import Typography from "@material-ui/core/Typography";
+import { grey } from '@material-ui/core/colors';
 
 const iconStyles = makeStyles(theme => ({
   root: {
     width: 30,
     height: 30,
-    opacity: 1
+    opacity: 1,
+    backgroundColor: grey[100]
   },
   demo: {
     backgroundColor: "#fffafa"
   },
   title: {
     margin: theme.spacing(4, 0, 2)
-  }
+  },
 }));
 
 const iconStyle = {
-  fontSize: "small",
-  color: "#636363"
-};
+  avatarIcon: {
+    fontSize: "medium",
+    color: "#3e55ab",
+  },
+  clearIcon: {
+    fontSize: "small",
+    color: grey[600]
+  }
+}
 
 const messageStyle = {
   primary: {
     fontFamily: ["Cern", "sans-serif"].join(","),
     color: "000000",
     opacity: 1,
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: 400
   },
   secondary: {
     fontFamily: ["Cern", "sans-serif"].join(","),
     color: "000000",
     opacity: 0.6,
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: 200
   }
 };
@@ -53,7 +61,7 @@ function MessageItem(props) {
     <ListItem>
       <ListItemAvatar>
         <Avatar className={icons.root}>
-          <FolderIcon style={iconStyle} />
+          <NotificationsIcon style={iconStyle.avatarIcon} />
         </Avatar>
       </ListItemAvatar>
       <ListItemText
@@ -76,7 +84,7 @@ function MessageItem(props) {
             console.log("Clicked");
           }}
         >
-          <ClearIcon style={iconStyle} />
+          <ClearIcon style={iconStyle.clearIcon}/>
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>

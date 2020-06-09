@@ -30,9 +30,25 @@ const createTray = () => {
   tray = new Tray(trayIcon);
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: "Rucio",
+      label: "Open App",
       click: () => {
-        showWindow();
+        showWindow('recent');
+      }
+    },
+    {
+      label: "Separator",
+      type: "separator"
+    },
+    {
+      label: "Show Activity",
+      click: () => {
+        showWindow('recent');
+      }
+    },
+    {
+      label: "Notifications",
+      click: () => {
+        showWindow('notifications');
       }
     },
     {
@@ -53,7 +69,7 @@ const createTray = () => {
       }
     }
   ]);
-  tray.setToolTip("Rucio");
+  tray.setToolTip("Rucio Notifier");
   tray.on("click", function(event) {
     toggleWindow();
   });
@@ -92,6 +108,7 @@ const createWindow = () => {
     skipTaskbar: true,
     scrollable: false,
     backgroundColor: "#fffafa",
+    useContentSize: true,
     webPreferences: {
       backgroundThrottling: false
     }
@@ -109,17 +126,10 @@ const toggleWindow = () => {
   window.isVisible() ? window.hide() : showWindow();
 };
 
-const showWindow = () => {
+const showWindow = (target) => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3003');
-  window.show();
-};
-
-const showHelp = () => {
-  const position = getWindowPosition();
-  window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3003');
+  window.loadURL('http://localhost:3003/'+target);
   window.show();
 };
 
