@@ -7,20 +7,25 @@ import MessageItem from "./MessageItem";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "auto"
+    width: "100%"
   },
   demo: {
     backgroundColor: "#fffafa"
   },
   title: {
     margin: theme.spacing(4, 0, 2)
+  },
+  item: {
+    width: 334,
+    padding: 5,
+    marginTop: 10
   }
 }));
 
 const spanStyle = {
   fontFamily: "Cern, sans-serif",
-  fontWeight: 800,
-  fontSize: 20,
+  fontWeight: 700,
+  fontSize: 24,
   color: "#3e55ab"
 };
 
@@ -41,7 +46,7 @@ export default function NotificationList(props) {
         <Grid item md={12}>
           <span style={spanStyle}>{props.title}</span>
           <div className={classes.demo}>
-            <List dense='false'>{allMessages}</List>
+            <List dense='false' className={classes.item}>{allMessages}</List>
           </div>
         </Grid>
       </Grid>

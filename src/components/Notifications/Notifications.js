@@ -10,11 +10,11 @@ function Notifications() {
         flexWrap="wrap"
         flexDirection="column"
         alignContent="flex-start"
-        paddingTop={1}
+        paddingTop={0}
         m={1}
         bgcolor="#fffafa"
         color="#212121"
-        css={{ maxWidth: 360, height: 200 }}
+        css={{ maxWidth: 360, height: "100%" }}
       >
         <NotificationList title="All Notifications"/>
       </Box>

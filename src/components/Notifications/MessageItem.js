@@ -12,8 +12,8 @@ import Typography from "@material-ui/core/Typography";
 
 const iconStyles = makeStyles(theme => ({
   root: {
-    width: "auto",
-    height: 25,
+    width: 30,
+    height: 30,
     opacity: 1
   },
   demo: {
