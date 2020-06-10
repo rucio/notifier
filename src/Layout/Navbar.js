@@ -1,6 +1,6 @@
 import React from "react";
-import Recent from "../Activity/Recent";
-import Notifications from "../Notifications/Notifications";
+import Recent from "../components/Activity/Recent";
+import Notifications from "../components/Notifications/Notifications";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
