@@ -9,12 +9,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles, Typography } from "@material-ui/core";
 
-
 const useStyles = makeStyles((theme) => ({
   root:{
   },
   title:{
-    fontFamily: "Cern, sans-serif",
+    fontFamily: 'Cern',
     color: "#3e55ab",
     fontWeight: 700,
     fontSize: 24,
@@ -62,6 +61,7 @@ function Settings() {
           <DialogTitle id="form-dialog-title">
             <Typography className={classes.title}>Settings</Typography>
           </DialogTitle>
+          {/* TODO: Add Settings as we go */}
           <DialogContent className={classes.box}>
             <DialogContentText>All Settings</DialogContentText>
           </DialogContent>
