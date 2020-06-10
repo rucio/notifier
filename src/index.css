@@ -1,13 +1,47 @@
+@font-face {
+  font-family: "Cern", "Cern Regular";
+  src: local("Cern.ttf"), local("Cern.otf"), 
+  url("./fonts/Cern.ttf") format("truetype"), 
+  url("./fonts/Cern.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cern", "Cern Medium";
+  src: local("Cern"), local("Cern"), 
+  url("./fonts/Cern-Medium.ttf") format("truetype"), 
+  url("./fonts/Cern-Medium.otf") format("otf");
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cern", "Cern Light";
+  src: local("Cern"), local("Cern"), 
+  url("./fonts/Cern-Light.ttf") format("truetype"), 
+  url("./fonts/Cern-Light.otf") format("otf");
+  font-weight: light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cern", "Cern Bold";
+  src: local("Cern"), local("Cern"), 
+  url("./fonts/Cern-Bold.ttf") format("truetype"), 
+  url("./fonts/Cern-Bold.otf") format("otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Cern", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
