@@ -1,14 +1,12 @@
 import React from "react";
-import Recent from "./Activity/Recent";
-import Notifications from "./Notifications/Notifications";
+import Recent from "../Activity/Recent";
+import Notifications from "../Notifications/Notifications";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 
-// Using Standard Material UI Tabs Code from
-// https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/tabs/CustomizedTabs.js
 const AntTabs = withStyles({
   root: {
     borderBottom: "1px solid #e8e8e8",
