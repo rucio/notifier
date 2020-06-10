@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Header from "./components/Header";
-// import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar";
+import Header from "./components/Layout/Header";
+import Navbar from "./components/Layout/Navbar";
 import "./App.css";
 
 class App extends Component {
