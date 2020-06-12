@@ -6,23 +6,23 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsIcon from "@material-ui/icons/Notifications";
 import ClearIcon from "@material-ui/icons/Clear";
 import Typography from "@material-ui/core/Typography";
-import { grey } from '@material-ui/core/colors';
+import { grey } from "@material-ui/core/colors";
 
-const iconStyles = makeStyles(theme => ({
+const iconStyles = makeStyles((theme) => ({
   root: {
     width: 30,
     height: 30,
     opacity: 1,
-    backgroundColor: grey[100]
+    backgroundColor: grey[100],
   },
   demo: {
-    backgroundColor: "#fffafa"
+    backgroundColor: "#fffafa",
   },
   title: {
-    margin: theme.spacing(4, 0, 2)
+    margin: theme.spacing(4, 0, 2),
   },
 }));
 
@@ -33,9 +33,9 @@ const iconStyle = {
   },
   clearIcon: {
     fontSize: "small",
-    color: grey[600]
-  }
-}
+    color: grey[600],
+  },
+};
 
 const messageStyle = {
   primary: {
@@ -43,15 +43,15 @@ const messageStyle = {
     color: "000000",
     opacity: 1,
     fontSize: 14,
-    fontWeight: 400
+    fontWeight: 400,
   },
   secondary: {
     fontFamily: ["Cern", "sans-serif"].join(","),
     color: "000000",
     opacity: 0.6,
     fontSize: 12,
-    fontWeight: 200
-  }
+    fontWeight: 200,
+  },
 };
 
 function MessageItem(props) {
@@ -80,11 +80,9 @@ function MessageItem(props) {
           aria-label="clear"
           size="small"
           color="secondary"
-          onClick={() => {
-            console.log("Clicked");
-          }}
+          onClick={props.onClick}
         >
-          <ClearIcon style={iconStyle.clearIcon}/>
+          <ClearIcon style={iconStyle.clearIcon} />
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
