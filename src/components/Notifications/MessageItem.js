@@ -6,36 +6,48 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import ErrorIcon from "@material-ui/icons/Error";
 import ClearIcon from "@material-ui/icons/Clear";
 import Typography from "@material-ui/core/Typography";
-import { grey } from '@material-ui/core/colors';
+import { grey, green, red } from "@material-ui/core/colors";
 
-const iconStyles = makeStyles(theme => ({
+const iconStyles = makeStyles((theme) => ({
   root: {
     width: 30,
     height: 30,
     opacity: 1,
-    backgroundColor: grey[100]
+    backgroundColor: grey[100],
   },
   demo: {
-    backgroundColor: "#fffafa"
+    backgroundColor: "#fffafa",
   },
   title: {
-    margin: theme.spacing(4, 0, 2)
+    margin: theme.spacing(4, 0, 2),
   },
 }));
 
 const iconStyle = {
   avatarIcon: {
-    fontSize: "medium",
-    color: "#3e55ab",
+    message: {
+      fontSize: "medium",
+      color: "#3e55ab",
+    },
+    success: {
+      fontSize: "medium",
+      color: green[600],
+    },
+    failed: {
+      fontSize: "medium",
+      color: red[600],
+    },
   },
   clearIcon: {
     fontSize: "small",
-    color: grey[600]
-  }
-}
+    color: grey[600],
+  },
+};
 
 const messageStyle = {
   primary: {
@@ -43,25 +55,34 @@ const messageStyle = {
     color: "000000",
     opacity: 1,
     fontSize: 14,
-    fontWeight: 400
+    fontWeight: 400,
   },
   secondary: {
     fontFamily: ["Cern", "sans-serif"].join(","),
     color: "000000",
     opacity: 0.6,
     fontSize: 12,
-    fontWeight: 200
-  }
+    fontWeight: 200,
+  },
 };
 
 function MessageItem(props) {
   const icons = iconStyles();
 
+  const messageIcon = (type, status) => {
+    if (type === "message")
+      return <NotificationsIcon style={iconStyle.avatarIcon.message} />;
+    else if (type === "alert" && status === "success")
+      return <CheckCircleIcon style={iconStyle.avatarIcon.success} />;
+    else if (status === "failed")
+      return <ErrorIcon style={iconStyle.avatarIcon.failed} />;
+  };
+
   return (
     <ListItem>
       <ListItemAvatar>
         <Avatar className={icons.root}>
-          <NotificationsIcon style={iconStyle.avatarIcon} />
+          {messageIcon(props.type, props.status)}
         </Avatar>
       </ListItemAvatar>
       <ListItemText
@@ -70,7 +91,7 @@ function MessageItem(props) {
         }
         secondary={
           <Typography style={messageStyle.secondary}>
-            {props.secondary}
+            {props.secondary + " • " + props.server}
           </Typography>
         }
       />
@@ -80,11 +101,9 @@ function MessageItem(props) {
           aria-label="clear"
           size="small"
           color="secondary"
-          onClick={() => {
-            console.log("Clicked");
-          }}
+          onClick={props.onClick}
         >
-          <ClearIcon style={iconStyle.clearIcon}/>
+          <ClearIcon style={iconStyle.clearIcon} />
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>

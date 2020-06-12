@@ -14,6 +14,8 @@ const theme = createMuiTheme({
   },
 });
 
+const rucioUser = "Vivek"
+
 function Account() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -27,7 +29,7 @@ function Account() {
   return (
     <div>
       <IconButton
-        aria-label="account"
+        aria-label="fade-menu"
         aria-haspopup="true"
         edge="end"
         color="inherit"
@@ -36,14 +38,19 @@ function Account() {
         <AccountCircleIcon />
       </IconButton>
       <Menu
-        id="account"
+        id="fade-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
         <MuiThemeProvider theme={theme}>
-          <MenuItem>User Jdoe</MenuItem>
+          <MenuItem
+            onClick={handleClose}
+            style={{ color: "#3e55ab", fontWeight: 600 }}
+          >
+            {rucioUser}
+          </MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>Logout</MenuItem>

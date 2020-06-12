@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
   box:{
     fontFamily: "Cern, sans-serif",
     backgroundColor: "#fffafa",
-    width: 225,
-    height: 250
+    width: 240,
+    height: 300
   },
   button:{
     fontFamily: "Cern, sans-serif",

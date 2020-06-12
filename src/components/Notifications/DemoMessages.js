@@ -1,16 +1,38 @@
-const messages = [
+const demoMessages = () => [
   {
     id: 0,
     primary: "Welcome to Rucio!",
     secondary: "This is the notifications panel",
-    read: false
+    server: "rucio-dev-server",
+    type: "message",
+    read: false,
   },
   {
     id: 1,
     primary: "Setup Complete",
     secondary: "You can start using the app",
-    read: false
+    server: "rucio-atlas",
+    type: "alert",
+    status: "success",
+    read: false,
   },
+  {
+    id: 2,
+    primary: "Authentication Failed",
+    secondary: "Check your connection",
+    server: "rucio-atlas",
+    type: "alert",
+    status: "failed",
+    read: false,
+  },
+  {
+    id: 3,
+    primary: "Welcome to Rucio!",
+    secondary: "This is the notifications panel",
+    server: "rucio-dev-server",
+    type: "message",
+    read: false,
+  }
 ];
 
-export default messages;
+export default demoMessages;
