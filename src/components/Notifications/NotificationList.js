@@ -36,7 +36,7 @@ export default function NotificationList(props) {
   function markRead(e, i) {
     const newMessages = [...messages];
     newMessages[i].read = true;
-    newMessages.pop();
+    newMessages.splice(i, 1);
     setMessages(newMessages);
   }
 
@@ -53,6 +53,8 @@ export default function NotificationList(props) {
                   primary={item.primary}
                   secondary={item.secondary}
                   server={item.server}
+                  type={item.type}
+                  status={item.status}
                   read={item.read}
                   onClick={(e) => markRead(e, i)}
                 />

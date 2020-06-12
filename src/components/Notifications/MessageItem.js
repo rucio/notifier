@@ -7,9 +7,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import ErrorIcon from "@material-ui/icons/Error";
 import ClearIcon from "@material-ui/icons/Clear";
 import Typography from "@material-ui/core/Typography";
-import { grey } from "@material-ui/core/colors";
+import { grey, green, red } from "@material-ui/core/colors";
 
 const iconStyles = makeStyles((theme) => ({
   root: {
@@ -28,8 +30,18 @@ const iconStyles = makeStyles((theme) => ({
 
 const iconStyle = {
   avatarIcon: {
-    fontSize: "medium",
-    color: "#3e55ab",
+    message: {
+      fontSize: "medium",
+      color: "#3e55ab",
+    },
+    success: {
+      fontSize: "medium",
+      color: green[600],
+    },
+    failed: {
+      fontSize: "medium",
+      color: red[600],
+    },
   },
   clearIcon: {
     fontSize: "small",
@@ -57,11 +69,20 @@ const messageStyle = {
 function MessageItem(props) {
   const icons = iconStyles();
 
+  const messageIcon = (type, status) => {
+    if (type === "message")
+      return <NotificationsIcon style={iconStyle.avatarIcon.message} />;
+    else if (type === "alert" && status === "success")
+      return <CheckCircleIcon style={iconStyle.avatarIcon.success} />;
+    else if (status === "failed")
+      return <ErrorIcon style={iconStyle.avatarIcon.failed} />;
+  };
+
   return (
     <ListItem>
       <ListItemAvatar>
         <Avatar className={icons.root}>
-          <NotificationsIcon style={iconStyle.avatarIcon} />
+          {messageIcon(props.type, props.status)}
         </Avatar>
       </ListItemAvatar>
       <ListItemText
@@ -70,7 +91,7 @@ function MessageItem(props) {
         }
         secondary={
           <Typography style={messageStyle.secondary}>
-            {props.secondary}
+            {props.secondary + " • " + props.server}
           </Typography>
         }
       />
