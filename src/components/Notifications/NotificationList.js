@@ -8,12 +8,11 @@ import MessageItem from "./MessageItem";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    //TODO: Fix scrolling
+    overflow: "hidden"
   },
   demo: {
     backgroundColor: "#fffafa",
-  },
-  title: {
-    margin: theme.spacing(4, 0, 2),
   },
   item: {
     width: 334,
@@ -22,18 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const spanStyle = {
-  fontFamily: "Cern, sans-serif",
-  fontWeight: 700,
-  fontSize: 24,
-  color: "#3e55ab",
-};
-
 export default function NotificationList(props) {
   const classes = useStyles();
   const [messages, setMessages] = useState(demoMessages);
 
-  function markRead(e, i) {
+  function markRead(i) {
     const newMessages = [...messages];
     newMessages[i].read = true;
     newMessages.splice(i, 1);
@@ -41,10 +33,9 @@ export default function NotificationList(props) {
   }
 
   return (
-    <div className={classes.root}>
+    <div id="notifications" className={classes.root}>
       <Grid container spacing={2}>
         <Grid item md={12}>
-          <span style={spanStyle}>{props.title}</span>
           <div className={classes.demo}>
             <List dense="false" className={classes.item}>
               {messages.map((item, i) => (
@@ -56,7 +47,7 @@ export default function NotificationList(props) {
                   type={item.type}
                   status={item.status}
                   read={item.read}
-                  onClick={(e) => markRead(e, i)}
+                  onClick={(e) => markRead(i)}
                 />
               ))}
             </List>

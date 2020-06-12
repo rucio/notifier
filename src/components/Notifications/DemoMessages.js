@@ -25,6 +25,14 @@ const demoMessages = () => [
     status: "failed",
     read: false,
   },
+  {
+    id: 3,
+    primary: "Welcome to Rucio!",
+    secondary: "This is the notifications panel",
+    server: "rucio-dev-server",
+    type: "message",
+    read: false,
+  }
 ];
 
 export default demoMessages;
