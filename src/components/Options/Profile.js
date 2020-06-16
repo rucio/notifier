@@ -2,9 +2,11 @@ import React from "react";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import ListItem from "@material-ui/core/ListItem";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Divider } from "@material-ui/core";
+import user from "./user.json";
 
 const theme = createMuiTheme({
   typography: {
@@ -14,9 +16,9 @@ const theme = createMuiTheme({
   },
 });
 
-const rucioUser = "Vivek"
+const rucioUser = user[0].displayName;
 
-function Account() {
+function Profile() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -26,6 +28,7 @@ function Account() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <div>
       <IconButton
@@ -45,19 +48,28 @@ function Account() {
         onClose={handleClose}
       >
         <MuiThemeProvider theme={theme}>
-          <MenuItem
-            onClick={handleClose}
-            style={{ color: "#3e55ab", fontWeight: 600 }}
-          >
+          <ListItem style={{ color: "#3e55ab", fontWeight: 600 }}>
             {rucioUser}
+          </ListItem>
+          <MenuItem
+            onMouseEnter={(e) => (e.target.style.color = "#3e55ab")}
+            onMouseLeave={(e) => (e.target.style.color = "#000000")}
+            onClick={handleClose}
+          >
+            My account
           </MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
           <Divider />
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem
+            onMouseEnter={(e) => (e.target.style.color = "#3e55ab")}
+            onMouseLeave={(e) => (e.target.style.color = "#000000")}
+            onClick={handleClose}
+          >
+            Logout
+          </MenuItem>
         </MuiThemeProvider>
       </Menu>
     </div>
   );
 }
 
-export default Account;
+export default Profile;
