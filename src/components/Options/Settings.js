@@ -5,9 +5,9 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles, Typography } from "@material-ui/core";
+import Preferences from "./Preferences";
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -63,7 +63,7 @@ function Settings() {
           </DialogTitle>
           {/* TODO: Add Settings as we go */}
           <DialogContent className={classes.box}>
-            <DialogContentText>All Settings</DialogContentText>
+            <Preferences/>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} variant="contained" color="primary" className={classes.button}>
