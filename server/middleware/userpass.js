@@ -27,4 +27,4 @@ getTokenWithUserpass = (req, res, next) => {
       });
   };
 
-exports.getTokenWithUserpass = getTokenWithUserpass;
+exports.getToken = getTokenWithUserpass;
