@@ -64,9 +64,6 @@ function Login() {
         },
       })
       .then((response) => {
-        console.log(response.status);
-        const RUCIO_TOKEN = response.data.token;
-        const TOKEN_EXPIRES = response.data.expires;
         if (response.status === 200) {
           setLoggedin(!loggedin);
           console.log("Logged In");

@@ -5,7 +5,6 @@ const fs = require("fs");
 var cors = require("cors");
 var router = express.Router();
 const config = require("../src/components/Options/config.json");
-const { resourcesPath } = require("process");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
@@ -19,6 +18,7 @@ router.get("/", (req, res) => {
 });
 
 const httpsAgent = new https.Agent({ ca: fs.readFileSync(config[0].cacert) });
+
 router.post("/login/userpass", (req, res) => {
   axios
     .get(`https://localhost/auth/userpass`, {
@@ -26,16 +26,15 @@ router.post("/login/userpass", (req, res) => {
       headers: req.body.payload,
     })
     .then((response) => {
-      res.json({
-        token: response.headers["x-rucio-auth-token"],
-        expires: response.headers["x-rucio-auth-token-expires"],
+      res.send({
+        token: response.headers['x-rucio-auth-token'],
+        expires: response.headers['x-rucio-auth-token-expires'],
       });
-      res.sendStatus(200);
       console.log("[INFO] Success");
     })
     .catch((error) => {
-      console.log("[WARNING]  Some error occured.");
-      res.send(req.body.payload);
+      console.log("[WARNING] " + error);
+      res.sendStatus(500);
     });
 });
 
