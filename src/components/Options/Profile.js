@@ -17,7 +17,9 @@ const theme = createMuiTheme({
 });
 
 const rucioUser = user[0].displayName;
-
+/**
+ * Displays the profile options for the logged in user
+ */
 function Profile() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -28,6 +30,10 @@ function Profile() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  function handleLogout() {
+    console.log("Attempting Logout...");
+  }
 
   return (
     <div>
@@ -62,7 +68,7 @@ function Profile() {
           <MenuItem
             onMouseEnter={(e) => (e.target.style.color = "#3e55ab")}
             onMouseLeave={(e) => (e.target.style.color = "#000000")}
-            onClick={handleClose}
+            onClick={handleLogout}
           >
             Logout
           </MenuItem>
