@@ -3,10 +3,10 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import LogoDark from "../../Layout/LogoDark";
 import axios from "axios";
+import LoginButton from "./LoginButton";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,20 +42,24 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
+  const [loading, setLoading] = useState();
 
   function validateForm() {
     return account.length > 0 && username.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
+    if (loading) return;
     event.preventDefault();
 
-    const serverUrl = "http://localhost:3004/rucio";
+    const serverUrl = "http://localhost:3004";
     const payload = {
       "X-Rucio-Account": account,
       "X-Rucio-Username": username,
       "X-Rucio-Password": password,
     };
+    
+    setLoading(true);
     axios
       .post(serverUrl + "/login/userpass", {
         payload,
@@ -64,13 +68,16 @@ function Login() {
         },
       })
       .then((response) => {
+        setLoading(loading ? false: null)
         if (response.status === 200) {
           setLoggedin(!loggedin);
-          console.log("Logged In");
+          console.log("%c [INFO] Logged In Successfully", "color: green;");
         }
       })
       .catch((error) => {
-        console.log(error);
+        const errorcode = Number(error.toString().split(" ").pop());
+        if (errorcode === 401) console.log("%c [ERROR] Invalid Credentials", "color: red");
+        else console.log(error);
       });
   }
 
@@ -117,7 +124,7 @@ function Login() {
             autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button
+          <LoginButton
             type="submit"
             fullWidth
             variant="contained"
@@ -125,9 +132,10 @@ function Login() {
             disabled={!validateForm()}
             className={classes.submit}
             onClick={handleSubmit}
+            loading={loading}
           >
-            Sign In
-          </Button>
+            Sign in
+          </LoginButton>
         </form>
       </div>
     </Container>
