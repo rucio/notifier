@@ -1,4 +1,10 @@
 # notifier
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/react?style=flat-square)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/dev/electron?style=flat-square)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/express?style=flat-square)
+
+
+
 Rucio Notification Utility with a graphical user interface. This app uses React v16.13.1 and Electron v7.0.0
 
 ## Getting Started
