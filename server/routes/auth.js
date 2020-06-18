@@ -11,7 +11,10 @@ function validateToken (token) {
 }
 
 router.post("/login/userpass", userpassAuth.getToken, (req, res) => {
-  if (RUCIO_TOKEN.token === "") console.log("[ERROR] Authentication Failed");
+  if (res.statusCode != 200) {
+    console.log("[ERROR] Authentication Failed");
+    RUCIO_TOKEN = {token: '', expires: ''}
+  }
   else console.log(`[INFO] Token Expires: ${RUCIO_TOKEN.expires}`);
 });
 
