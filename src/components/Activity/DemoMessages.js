@@ -1,4 +1,4 @@
-const demoMessages = () => [
+const demoMessages = [
   {
     id: 0,
     primary: "Welcome to Rucio!",
