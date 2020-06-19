@@ -1,5 +1,5 @@
 import React from 'react'
-import "./ruciosq.png";
+import logoImage from "./ruciosq.png";
 
 const imgStyle = {
     position: "relative",
@@ -12,7 +12,7 @@ const imgStyle = {
   };
   
 function Logo() {
-    return <img src="./ruciosq.png" alt="logo" style={imgStyle} />;
+    return <img src={logoImage} alt="logo" style={imgStyle} />;
 }
 
 export default Logo
