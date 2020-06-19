@@ -37,7 +37,7 @@ export default function NotificationList(props) {
       <Grid container spacing={2}>
         <Grid item md={12}>
           <div className={classes.demo}>
-            <List dense="false" className={classes.item}>
+            <List dense={false} className={classes.item}>
               {messages.map((item, i) => (
                 <MessageItem
                   key={item.id}

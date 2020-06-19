@@ -52,7 +52,7 @@ export default function RecentList(props) {
         <Grid item md={12}>
           <span style={spanStyle}> {props.title} </span>
           <div className={classes.demo}>
-            <List dense='false'>{allMessages}</List>
+            <List dense={false}>{allMessages}</List>
           </div>
         </Grid>
       </Grid>
