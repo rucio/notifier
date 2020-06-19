@@ -1,26 +1,26 @@
 import React from "react";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItem from "@material-ui/core/ListItem";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { Divider } from "@material-ui/core";
+import { Divider, makeStyles } from "@material-ui/core";
 import user from "./user.json";
 
-const theme = createMuiTheme({
+const useStyles = makeStyles((theme) => ({
   typography: {
     fontFamily: "Cern",
     fontSize: 14,
     fontWeight: 400,
   },
-});
+}))
 
 const rucioUser = user[0].displayName;
 /**
  * Displays the profile options for the logged in user
  */
 function Profile() {
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -36,7 +36,7 @@ function Profile() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <IconButton
         aria-label="fade-menu"
         aria-haspopup="true"
@@ -53,7 +53,7 @@ function Profile() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MuiThemeProvider theme={theme}>
+        <div className={classes.typography}>
           <ListItem style={{ color: "#3e55ab", fontWeight: 600 }}>
             {rucioUser}
           </ListItem>
@@ -72,9 +72,9 @@ function Profile() {
           >
             Logout
           </MenuItem>
-        </MuiThemeProvider>
+        </div>
       </Menu>
-    </div>
+    </React.Fragment>
   );
 }
 

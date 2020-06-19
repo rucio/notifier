@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
 import MessageItem from "./MessageItem";
+import demoMessages from "./DemoMessages"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,19 +25,9 @@ const spanStyle = {
 };
 
 export default function RecentList(props) {
-  const [messages, setMessages] = useState([]);
   const classes = useStyles();
 
-  useEffect(() => {
-    const fetchdata = async () => {
-      const res = await axios('/rucio/recent', );
-      setMessages(res.data);
-    }
-    
-    fetchdata()
-  }, []);
-
-  const allMessages = messages.map(item => (
+  const allMessages = demoMessages.map(item => (
     <MessageItem
       key={item.id}
       primary={item.primary}
