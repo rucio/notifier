@@ -4,7 +4,6 @@ const fs = require("fs");
 const config = require("../../src/components/Options/config.json");
 
 const httpsAgent = new https.Agent({ ca: fs.readFileSync(config[0].cacert) });
-const ca_cert = config[0].cacert;
 /**
  * Attempts to get the RUCIO_AUTH_TOKEN with USERPASS Auth Strategy
  * @param {Request} req
@@ -23,7 +22,7 @@ function getTokenWithUserpass(req, res, next) {
         expires: response.headers["x-rucio-auth-token-expires"],
       };
       console.log("[INFO] Token Received");
-      res.sendStatus(200);
+      res.send(RUCIO_TOKEN).status(200);
       next();
     })
     .catch((error) => {

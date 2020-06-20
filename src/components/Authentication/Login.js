@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -45,7 +44,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
   const [loading, setLoading] = useState();
-  const { setAuthenticated } = useAuth();
+  //const { setAuthenticated } = useAuth();
   /**
    * Validates the form responses to prevent empty required fields
    */
@@ -75,8 +74,9 @@ function Login() {
       .then((response) => {
         setLoading(loading ? false : null);
         if (response.status === 200) {
-          setAuthenticated(true);
+          //setAuthenticated(true);
           setLoggedin(true);
+          console.log(response.data); 
           console.log("%c [INFO] Logged In Successfully", "color: green;");
         }
       })
@@ -96,10 +96,6 @@ function Login() {
     if (loading) return;
     event.preventDefault();
     loginWithUserpass();
-  }
-
-  if (loggedin) {
-    return <Redirect to="/app/recent" />;
   }
 
   return (
