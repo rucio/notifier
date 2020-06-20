@@ -4,12 +4,12 @@ const fs = require("fs");
 const config = require("../../src/components/Options/config.json");
 
 const httpsAgent = new https.Agent({ ca: fs.readFileSync(config[0].cacert) });
-
+const ca_cert = config[0].cacert;
 /**
  * Attempts to get the RUCIO_AUTH_TOKEN with USERPASS Auth Strategy
  * @param {Request} req
  * @param {Response} res
- * @param {import("express").NextFunction} next
+ * @param {NextFunction} next
  */
 function getTokenWithUserpass(req, res, next) {
   axios

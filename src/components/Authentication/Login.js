@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import LogoDark from "../../Layout/LogoDark";
 import axios from "axios";
 import LoginButton from "./LoginButton";
-import {  useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -45,7 +45,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
   const [loading, setLoading] = useState();
-  const {setAuthenticated} = useAuth();
+  const { setAuthenticated } = useAuth();
   /**
    * Validates the form responses to prevent empty required fields
    */
@@ -103,63 +103,63 @@ function Login() {
   }
 
   return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <LogoDark />
-          <Typography className={classes.title}>Sign in to Rucio</Typography>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="account"
-              label="Account"
-              name="account"
-              autoComplete="account"
-              autoFocus
-              onChange={(e) => setAccount(e.target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="username"
-              label="Username"
-              type="username"
-              id="username"
-              autoComplete="current-username"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <LoginButton
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              disabled={!validateForm()}
-              className={classes.submit}
-              onClick={handleSubmit}
-              loading={loading}
-            >
-              Sign in
-            </LoginButton>
-          </form>
-        </div>
-      </Container>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <LogoDark />
+        <Typography className={classes.title}>Sign in to Rucio</Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="account"
+            label="Account"
+            name="account"
+            autoComplete="account"
+            autoFocus
+            onChange={(e) => setAccount(e.target.value)}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="username"
+            label="Username"
+            type="username"
+            id="username"
+            autoComplete="current-username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <LoginButton
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            disabled={!validateForm()}
+            className={classes.submit}
+            onClick={handleSubmit}
+            loading={loading}
+          >
+            Sign in
+          </LoginButton>
+        </form>
+      </div>
+    </Container>
   );
 }
 
