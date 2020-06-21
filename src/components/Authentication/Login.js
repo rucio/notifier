@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -9,6 +9,7 @@ import LogoDark from "../../Layout/LogoDark";
 import axios from "axios";
 import LoginButton from "./LoginButton";
 import { useAuth } from "./AuthContext";
+import { Cookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,12 +41,13 @@ const useStyles = makeStyles((theme) => ({
 
 function Login() {
   const classes = useStyles();
+  const cookies = new Cookies();
   const [account, setAccount] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
   const [loading, setLoading] = useState();
-  const { setAuthenticated } = useAuth();
+  const { setAuthtoken } = useAuth();
 
   /**
    * Validates the form responses to prevent empty required fields
@@ -71,11 +73,12 @@ function Login() {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
       })
       .then((response) => {
         setLoading(loading ? false : null);
         if (response.status === 200) {
-          setAuthenticated(true);
+          setAuthtoken(cookies.get('RUCIO_TOKEN'));
           saveUser(account, username, password);
           setLoggedin(true);
           console.log("%c [INFO] Logged In Successfully", "color: green;");
@@ -102,7 +105,6 @@ function Login() {
     localStorage.setItem("CURR_ACCOUNT", account);
     localStorage.setItem("CURR_USERNAME", username);
     localStorage.setItem("CURR_PASSWORD", password);
-    console.log(localStorage.getItem("CURR_USERNAME"));
   }
 
   /**
@@ -114,8 +116,8 @@ function Login() {
     loginWithUserpass();
   }
 
-  if (loggedin){
-    return <Redirect to="/app/recent"/>
+  if (loggedin) {
+    return <Redirect to="/app/recent" />;
   }
 
   return (

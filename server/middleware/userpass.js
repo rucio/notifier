@@ -22,6 +22,10 @@ function getTokenWithUserpass(req, res, next) {
         expires: response.headers["x-rucio-auth-token-expires"],
       };
       console.log("[INFO] Token Received");
+      res.cookie('RUCIO_TOKEN', RUCIO_TOKEN.token, {
+        maxAge: 60 * 60 * 1000, // 1 hour
+        //httpOnly: true,
+      })
       res.send(RUCIO_TOKEN).status(200);
       next();
     })

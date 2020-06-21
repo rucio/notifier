@@ -129,7 +129,7 @@ const toggleWindow = () => {
 const showWindow = (target) => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3003/'+target);
+  window.loadURL('http://localhost:3003/app/'+target);
   window.show();
 };
 

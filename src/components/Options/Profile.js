@@ -7,6 +7,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Divider, makeStyles } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../Authentication/AuthContext";
+import { Cookies } from "react-cookie";
 import user from "./user.json";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,9 +23,10 @@ const rucioUser = user[0].displayName;
  * Displays the profile options for the logged in user
  */
 function Profile() {
+  const cookies = new Cookies();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { setAuthenticated } = useAuth();
+  const { setAuthtoken } = useAuth();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -37,7 +39,8 @@ function Profile() {
   function handleLogout() {
     console.log("Attempting Logout...");
     purgeUser();
-    setAuthenticated(false);
+    cookies.remove("RUCIO_TOKEN", { domain: "localhost", path: "/" });
+    setAuthtoken(false);
     return <Redirect to="/" />;
   }
 
