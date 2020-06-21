@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Redirect} from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -44,7 +45,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
   const [loading, setLoading] = useState();
-  //const { setAuthenticated } = useAuth();
+  const { setAuthenticated } = useAuth();
+
   /**
    * Validates the form responses to prevent empty required fields
    */
@@ -56,7 +58,6 @@ function Login() {
    * Attempts to login using Userpass Auth Strategy.
    */
   function loginWithUserpass() {
-    const serverUrl = "http://localhost:3004";
     const payload = {
       "X-Rucio-Account": account,
       "X-Rucio-Username": username,
@@ -65,7 +66,7 @@ function Login() {
 
     setLoading(true);
     axios
-      .post(serverUrl + "/login/userpass", {
+      .post("/login/userpass", {
         payload,
         headers: {
           "Content-Type": "application/json",
@@ -74,9 +75,9 @@ function Login() {
       .then((response) => {
         setLoading(loading ? false : null);
         if (response.status === 200) {
-          //setAuthenticated(true);
+          setAuthenticated(true);
+          saveUser(account, username, password);
           setLoggedin(true);
-          console.log(response.data); 
           console.log("%c [INFO] Logged In Successfully", "color: green;");
         }
       })
@@ -90,12 +91,41 @@ function Login() {
   }
 
   /**
+   * Saves the login information of the current user in local storage.
+   * The info can be used to retrieve the token again when it expires.
+   *
+   * @param {String} account
+   * @param {String} username
+   * @param {String} password
+   */
+  function saveUser(account, username, password) {
+    localStorage.setItem("CURR_ACCOUNT", account);
+    localStorage.setItem("CURR_USERNAME", username);
+    localStorage.setItem("CURR_PASSWORD", password);
+    console.log(localStorage.getItem("CURR_USERNAME"));
+  }
+
+  /**
+   * Removes the user details from local storage.
+   */
+  function purgeUser() {
+    localStorage.removeItem("CURR_ACCOUNT");
+    localStorage.removeItem("CURR_USERNAME");
+    localStorage.removeItem("CURR_PASSWORD");
+  }
+
+  /**
    * Handles the Login event on form submit.
    */
   function handleSubmit(event) {
     if (loading) return;
     event.preventDefault();
+    purgeUser();
     loginWithUserpass();
+  }
+
+  if (loggedin){
+    return <Redirect to="/app/recent"/>
   }
 
   return (

@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import AppLayout from "./Layout/AppLayout";
+import PrivateRoute from "./components/Authentication/PrivateRoute";
+
 import "./App.css";
+import Login from "./components/Authentication/Login";
+import { AuthContext } from "./components/Authentication/AuthContext";
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
   return (
-    <div className="container-small">
-      <AppLayout />
-    </div>
+    <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
+      <Router>
+        <div className="container-small">
+          <Route exact path="/" component={Login} />
+          <PrivateRoute path="/app" component={AppLayout} />
+        </div>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 
