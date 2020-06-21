@@ -106,21 +106,11 @@ function Login() {
   }
 
   /**
-   * Removes the user details from local storage.
-   */
-  function purgeUser() {
-    localStorage.removeItem("CURR_ACCOUNT");
-    localStorage.removeItem("CURR_USERNAME");
-    localStorage.removeItem("CURR_PASSWORD");
-  }
-
-  /**
    * Handles the Login event on form submit.
    */
   function handleSubmit(event) {
     if (loading) return;
     event.preventDefault();
-    purgeUser();
     loginWithUserpass();
   }
 

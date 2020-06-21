@@ -5,6 +5,8 @@ import ListItem from "@material-ui/core/ListItem";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Divider, makeStyles } from "@material-ui/core";
+import { Redirect } from "react-router-dom";
+import { useAuth } from "../Authentication/AuthContext";
 import user from "./user.json";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     fontWeight: 400,
   },
-}))
+}));
 
 const rucioUser = user[0].displayName;
 /**
@@ -22,6 +24,7 @@ const rucioUser = user[0].displayName;
 function Profile() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { setAuthenticated } = useAuth();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -33,6 +36,18 @@ function Profile() {
 
   function handleLogout() {
     console.log("Attempting Logout...");
+    purgeUser();
+    setAuthenticated(false);
+    return <Redirect to="/" />;
+  }
+
+  /**
+   * Removes the user details from local storage.
+   */
+  function purgeUser() {
+    localStorage.removeItem("CURR_ACCOUNT");
+    localStorage.removeItem("CURR_USERNAME");
+    localStorage.removeItem("CURR_PASSWORD");
   }
 
   return (
