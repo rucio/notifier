@@ -1,11 +1,10 @@
 import React from "react";
-import Recent from "../components/Activity/Recent";
+import Activity from "../components/Activity/ActivityLayout";
 import Notifications from "../components/Notifications/Notifications";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 
 const AntTabs = withStyles({
   root: {
@@ -73,19 +72,17 @@ function Navbar() {
             onChange={handleChange}
             aria-label="ant example"
           >
-            <AntTab label="Activity" component={Link} to="/app/recent" />
+            <AntTab label="Activity" component={Link} to="/app/activity" />
             <AntTab
               label="Notifications"
               component={Link}
               to="/app/notifications"
             />
           </AntTabs>
-          <Typography className={classes.padding} />
         </div>
       </div>
-      {/* The Switch block actually renders the main content depending upon the Route */}
       <Switch>
-        <Route path="/app/recent" component={Recent} />
+        <Route path="/app/activity" component={Activity} />
         <Route path="/app/notifications" component={Notifications} />
       </Switch>
     </Router>

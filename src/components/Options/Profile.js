@@ -8,7 +8,8 @@ import { Divider, makeStyles } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../Authentication/AuthContext";
 import { Cookies } from "react-cookie";
-import user from "./user.json";
+import { purgeUser } from "../Utils/User";
+import user from "../../config/user.json";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -42,15 +43,6 @@ function Profile() {
     cookies.remove("RUCIO_TOKEN", { domain: "localhost", path: "/" });
     setAuthtoken(false);
     return <Redirect to="/" />;
-  }
-
-  /**
-   * Removes the user details from local storage.
-   */
-  function purgeUser() {
-    localStorage.removeItem("CURR_ACCOUNT");
-    localStorage.removeItem("CURR_USERNAME");
-    localStorage.removeItem("CURR_PASSWORD");
   }
 
   return (

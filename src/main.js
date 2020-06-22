@@ -32,7 +32,7 @@ const createTray = () => {
     {
       label: "Open App",
       click: () => {
-        showWindow('recent');
+        showWindow('activity');
       }
     },
     {
@@ -42,7 +42,7 @@ const createTray = () => {
     {
       label: "Show Activity",
       click: () => {
-        showWindow('recent');
+        showWindow('activity');
       }
     },
     {

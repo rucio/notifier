@@ -32,6 +32,22 @@ const demoMessages = () => [
     server: "rucio-dev-server",
     type: "message",
     read: false,
+  },
+  {
+    id: 4,
+    primary: "Welcome to Rucio!",
+    secondary: "This is the notifications panel",
+    server: "rucio-dev-server",
+    type: "message",
+    read: false,
+  },
+  {
+    id: 5,
+    primary: "Welcome to Rucio!",
+    secondary: "This is the notifications panel",
+    server: "rucio-dev-server",
+    type: "message",
+    read: false,
   }
 ];
 

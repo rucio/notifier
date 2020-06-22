@@ -10,6 +10,7 @@ import axios from "axios";
 import LoginButton from "./LoginButton";
 import { useAuth } from "./AuthContext";
 import { Cookies } from "react-cookie";
+import { saveUser } from "../Utils/User";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -60,6 +61,7 @@ function Login() {
    * Attempts to login using Userpass Auth Strategy.
    */
   function loginWithUserpass() {
+    localStorage.setItem('AUTH_STRATEGY', 'USERPASS');
     const payload = {
       "X-Rucio-Account": account,
       "X-Rucio-Username": username,
@@ -78,7 +80,7 @@ function Login() {
       .then((response) => {
         setLoading(loading ? false : null);
         if (response.status === 200) {
-          setAuthtoken(cookies.get('RUCIO_TOKEN'));
+          setAuthtoken(cookies.get("RUCIO_TOKEN"));
           saveUser(account, username, password);
           setLoggedin(true);
           console.log("%c [INFO] Logged In Successfully", "color: green;");
@@ -94,20 +96,6 @@ function Login() {
   }
 
   /**
-   * Saves the login information of the current user in local storage.
-   * The info can be used to retrieve the token again when it expires.
-   *
-   * @param {String} account
-   * @param {String} username
-   * @param {String} password
-   */
-  function saveUser(account, username, password) {
-    localStorage.setItem("CURR_ACCOUNT", account);
-    localStorage.setItem("CURR_USERNAME", username);
-    localStorage.setItem("CURR_PASSWORD", password);
-  }
-
-  /**
    * Handles the Login event on form submit.
    */
   function handleSubmit(event) {
@@ -117,7 +105,7 @@ function Login() {
   }
 
   if (loggedin) {
-    return <Redirect to="/app/recent" />;
+    return <Redirect to="/app/activity" />;
   }
 
   return (

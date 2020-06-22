@@ -1,5 +1,5 @@
 import React from 'react'
-import "./ruciosq_dark.png";
+import darkLogoImage from "./ruciosq_dark.png";
 
 const imgStyle = {
     position: "relative",
@@ -12,7 +12,7 @@ const imgStyle = {
   };
   
 function LogoDark() {
-    return <img src="./ruciosq_dark.png" alt="logo_dark" style={imgStyle} />;
+    return <img src={darkLogoImage} alt="logo_dark" style={imgStyle} />;
 }
 
 export default LogoDark
