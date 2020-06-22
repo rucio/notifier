@@ -57,6 +57,11 @@ const markRead = () => {
   console.log("Read")
 }
 
+/**
+ * Displays the Message or the Notification using props passed from Parent Component.
+ * 
+ * @param {*} props 
+ */
 function MessageItem(props) {
   const icons = iconStyles();
   const items = itemStyles();

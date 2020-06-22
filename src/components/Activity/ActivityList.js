@@ -24,7 +24,12 @@ const spanStyle = {
     fontSize: 24,
 };
 
-export default function RecentList(props) {
+/**
+ * Renders the Activity List with a list of Messages
+ * @param {*} props from Parent Component
+ * @property {string} props.title - Set the title for the page.
+ */
+export default function ActivityList(props) {
   const classes = useStyles();
 
   const allMessages = demoMessages.map(item => (

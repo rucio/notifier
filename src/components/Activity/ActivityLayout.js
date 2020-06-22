@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import RecentList from "./RecentList";
+import RecentList from "./ActivityList";
 import { makeStyles } from "@material-ui/core";
 
 const boxStyle = makeStyles({
@@ -26,7 +26,7 @@ function Recent() {
         color="#212121"
         css={{ maxWidth: 360, height: "100%" }}
       >
-        <RecentList title="Recent Activity" />
+        <ActivityList title="Recent Activity" />
       </Box>
     </div>
   );
