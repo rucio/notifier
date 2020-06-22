@@ -1,28 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
 import MessageItem from "./MessageItem";
-import demoMessages from "./DemoMessages"
+import demoActivity from "./DemoActivity";
+import NoActivity from "./NoActivity";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-  },
-  demo: {
+    margin: 0,
     backgroundColor: "#fffafa",
+    overflowX: "hidden",
+    overflow: "auto",
+  },
+  item: {
+    width: 334,
+    padding: 5,
   },
   title: {
     margin: theme.spacing(4, 0, 2),
   },
 }));
-
-const spanStyle = {
-    fontFamily: "Cern, sans-serif",
-    color: "#3e55ab",
-    fontWeight: 700,
-    fontSize: 24,
-};
 
 /**
  * Renders the Activity List with a list of Messages
@@ -31,26 +30,30 @@ const spanStyle = {
  */
 export default function ActivityList(props) {
   const classes = useStyles();
+  const [activity, setActivity] = useState(demoActivity);
 
-  const allMessages = demoMessages.map(item => (
-    <MessageItem
-      key={item.id}
-      primary={item.primary}
-      secondary={item.secondary}
-      read={item.read}
-    />
-  ));
+  function expandActivity(i){
+    console.log(`Activity No ${i} Clicked`)
+  }
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={2}>
-        <Grid item md={12}>
-          <span style={spanStyle}> {props.title} </span>
-          <div className={classes.demo}>
-            <List dense={false}>{allMessages}</List>
-          </div>
-        </Grid>
-      </Grid>
-    </div>
+    <Grid id="activity-grid" className={classes.root}>
+        <List dense={false} className={classes.item}>
+          {activity.length !== 0 ? (
+            activity.map((item, i) => (
+              <MessageItem
+                key={item.id}
+                primary={item.primary}
+                secondary={item.secondary}
+                server={item.server}
+                read={item.read}
+                onClick={(e) => expandActivity(i)}
+              />
+            ))
+          ) : (
+            <NoActivity />
+          )}
+        </List>
+    </Grid>
   );
 }

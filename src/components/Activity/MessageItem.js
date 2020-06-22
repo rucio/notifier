@@ -6,27 +6,29 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
-import FolderIcon from "@material-ui/icons/Folder";
-import ClearIcon from "@material-ui/icons/Clear";
+import InfoIcon from '@material-ui/icons/Info';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from "@material-ui/core/Typography";
+import { grey } from "@material-ui/core/colors";
 
-const iconStyles = makeStyles(theme => ({
+const iconStyles = makeStyles((theme) => ({
   root: {
-    width: 25,
-    height: 25,
-    opacity: 1
+    width: 30,
+    height: 30,
+    opacity: 1,
+    backgroundColor: grey[100],
   },
   demo: {
-    backgroundColor: "#fffafa"
+    backgroundColor: "#fffafa",
   },
   title: {
-    margin: theme.spacing(4, 0, 2)
-  }
+    margin: theme.spacing(4, 0, 2),
+  },
 }));
 
 const iconStyle = {
-  fontSize: "small",
-  color: "#636363"
+  fontSize: "medium",
+  color: "#3e55ab",
 };
 
 const messageStyle = {
@@ -34,43 +36,32 @@ const messageStyle = {
     fontFamily: ["Cern", "sans-serif"].join(","),
     color: "000000",
     opacity: 1,
-    fontSize: 12,
-    fontWeight: 400
+    fontSize: 14,
+    fontWeight: 400,
   },
   secondary: {
     fontFamily: ["Cern", "sans-serif"].join(","),
     color: "000000",
     opacity: 0.6,
-    fontSize: 10,
-    fontWeight: 200
-  }
+    fontSize: 12,
+    fontWeight: 200,
+  },
 };
-
-const itemStyles = makeStyles({
-  root: {
-    paddingTop: "2px",
-    paddingBottom: "2px"
-  }
-});
-
-const markRead = () => {
-  console.log("Read")
-}
 
 /**
  * Displays the Message or the Notification using props passed from Parent Component.
- * 
- * @param {*} props 
+ *
+ * @param {*} props
  */
 function MessageItem(props) {
   const icons = iconStyles();
-  const items = itemStyles();
 
+  //TODO: Convert Activity into Card Type
   return (
-    <ListItem className={items.root}>
+    <ListItem>
       <ListItemAvatar>
         <Avatar className={icons.root}>
-          <FolderIcon style={iconStyle} />
+          <InfoIcon style={iconStyle} />
         </Avatar>
       </ListItemAvatar>
       <ListItemText
@@ -79,7 +70,7 @@ function MessageItem(props) {
         }
         secondary={
           <Typography style={messageStyle.secondary}>
-            {props.secondary}
+            {props.secondary + " • " + props.server}
           </Typography>
         }
       />
@@ -89,9 +80,9 @@ function MessageItem(props) {
           aria-label="clear"
           size="small"
           color="secondary"
-          onClick={markRead}
+          onClick={props.expandActivity}
         >
-          <ClearIcon style={iconStyle} />
+          <ExpandMoreIcon style={iconStyle} />
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>

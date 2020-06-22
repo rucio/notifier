@@ -1,5 +1,5 @@
 import React from "react";
-import DoneAllIcon from "@material-ui/icons/DoneAll";
+import LocalActivityIcon from '@material-ui/icons/LocalActivity';
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: 100,
   },
-  done: {
+  activity: {
     color: "#000000",
     opacity: 0.2,
     fontSize: 20,
@@ -24,15 +24,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ReadAll() {
+function NoActivity() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <DoneAllIcon className={classes.done} />
-      <span className={classes.text}>All Caught Up!</span>
+      <LocalActivityIcon className={classes.activity} />
+      <span className={classes.text}>Everything looks clean</span>
     </div>
   );
 }
 
-export default ReadAll;
+export default NoActivity;
