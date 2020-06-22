@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import RecentList from "./ActivityList";
+import ActivityList from "./ActivityList";
 import { makeStyles } from "@material-ui/core";
 
 const boxStyle = makeStyles({
@@ -9,7 +9,7 @@ const boxStyle = makeStyles({
   }
 })
 
-function Recent() {
+function Activity() {
   const boxContainer = boxStyle();
 
   return (
@@ -32,4 +32,4 @@ function Recent() {
   );
 }
 
-export default Recent;
+export default Activity;

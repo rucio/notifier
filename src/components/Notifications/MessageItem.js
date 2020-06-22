@@ -66,6 +66,11 @@ const messageStyle = {
   },
 };
 
+/**
+ * Renders Notification layout using props passed from Parent Component.
+ * 
+ * @param {*} props 
+ */
 function MessageItem(props) {
   const icons = iconStyles();
 
