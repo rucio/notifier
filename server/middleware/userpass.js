@@ -1,7 +1,7 @@
 const axios = require("axios");
 const https = require("https");
 const fs = require("fs");
-const config = require("../../src/components/Options/config.json");
+const config = require("../../src/config/config.json");
 
 const httpsAgent = new https.Agent({ ca: fs.readFileSync(config[0].cacert) });
 /**

@@ -105,7 +105,7 @@ function Login() {
   }
 
   if (loggedin) {
-    return <Redirect to="/app/recent" />;
+    return <Redirect to="/app/activity" />;
   }
 
   return (
