@@ -73,11 +73,11 @@ function Navbar() {
             onChange={handleChange}
             aria-label="ant example"
           >
-            <AntTab label="Activity" component={Link} to="/recent" />
+            <AntTab label="Activity" component={Link} to="/app/recent" />
             <AntTab
               label="Notifications"
               component={Link}
-              to="/notifications"
+              to="/app/notifications"
             />
           </AntTabs>
           <Typography className={classes.padding} />
@@ -85,8 +85,8 @@ function Navbar() {
       </div>
       {/* The Switch block actually renders the main content depending upon the Route */}
       <Switch>
-        <Route path="/recent" component={Recent} />
-        <Route path="/notifications" component={Notifications} />
+        <Route path="/app/recent" component={Recent} />
+        <Route path="/app/notifications" component={Notifications} />
       </Switch>
     </Router>
   );

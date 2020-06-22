@@ -15,7 +15,8 @@ router.post("/login/userpass", userpassAuth.getToken, (req, res) => {
     console.log("[ERROR] Authentication Failed");
     RUCIO_TOKEN = {token: '', expires: ''}
   }
-  else console.log(`[INFO] Token Expires: ${RUCIO_TOKEN.expires}`);
+  else {
+    console.log(`[INFO] Token Expires: ${RUCIO_TOKEN.expires}`);}
 });
 
 module.exports = router;
