@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
  */
 export default function ActivityList(props) {
   const classes = useStyles();
-  const [activity, setActivity] = useState(demoActivity);
+  const [activity] = useState(demoActivity);
 
   function expandActivity(i){
     console.log(`Activity No ${i} Clicked`)
