@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 
 const AntTabs = withStyles({
   root: {
@@ -80,10 +79,8 @@ function Navbar() {
               to="/app/notifications"
             />
           </AntTabs>
-          <Typography className={classes.padding} />
         </div>
       </div>
-      {/* The Switch block actually renders the main content depending upon the Route */}
       <Switch>
         <Route path="/app/activity" component={Activity} />
         <Route path="/app/notifications" component={Notifications} />

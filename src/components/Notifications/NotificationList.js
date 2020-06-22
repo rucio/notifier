@@ -4,20 +4,19 @@ import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
 import demoMessages from "./DemoMessages";
 import MessageItem from "./MessageItem";
+import ReadAll from "./ReadAll";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    //TODO: Fix scrolling
-    overflow: "hidden"
-  },
-  demo: {
+    margin: 0,
     backgroundColor: "#fffafa",
+    overflowX: "hidden",
+    overflow: "auto",
   },
   item: {
     width: 334,
     padding: 5,
-    marginTop: 10,
   },
 }));
 
@@ -33,27 +32,25 @@ export default function NotificationList(props) {
   }
 
   return (
-    <div id="notifications" className={classes.root}>
-      <Grid container spacing={2}>
-        <Grid item md={12}>
-          <div className={classes.demo}>
-            <List dense={false} className={classes.item}>
-              {messages.map((item, i) => (
-                <MessageItem
-                  key={item.id}
-                  primary={item.primary}
-                  secondary={item.secondary}
-                  server={item.server}
-                  type={item.type}
-                  status={item.status}
-                  read={item.read}
-                  onClick={(e) => markRead(i)}
-                />
-              ))}
-            </List>
-          </div>
-        </Grid>
-      </Grid>
-    </div>
+    <Grid id="notification-grid" className={classes.root}>
+      <List dense={false} className={classes.item}>
+        {messages.length !== 0 ? (
+          messages.map((item, i) => (
+            <MessageItem
+              key={item.id}
+              primary={item.primary}
+              secondary={item.secondary}
+              server={item.server}
+              type={item.type}
+              status={item.status}
+              read={item.read}
+              onClick={(e) => markRead(i)}
+            />
+          ))
+        ) : (
+          <ReadAll />
+        )}
+      </List>
+    </Grid>
   );
 }
