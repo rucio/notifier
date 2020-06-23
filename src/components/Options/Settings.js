@@ -1,34 +1,32 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import SettingsIcon from "@material-ui/icons/Settings";
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles, Typography } from "@material-ui/core";
 import Preferences from "./Preferences";
 
 const useStyles = makeStyles((theme) => ({
-  root:{
-  },
-  title:{
-    fontFamily: 'Cern',
+  title: {
+    fontFamily: "Cern",
     color: "#3e55ab",
     fontWeight: 700,
     fontSize: 24,
   },
-  box:{
+  box: {
     fontFamily: "Cern, sans-serif",
     backgroundColor: "#fffafa",
-    width: 240,
-    height: 300
+    width: 340,
+    height: 300,
   },
-  button:{
+  button: {
     fontFamily: "Cern, sans-serif",
     fontWeight: 500,
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 }));
 
 function Settings() {
@@ -53,24 +51,29 @@ function Settings() {
       >
         <SettingsIcon />
       </IconButton>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">
-            <Typography className={classes.title}>Settings</Typography>
-          </DialogTitle>
-          {/* TODO: Add Settings as we go */}
-          <DialogContent className={classes.box}>
-            <Preferences/>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} variant="contained" color="primary" className={classes.button}>
-              Save Changes
-            </Button>
-          </DialogActions>
-        </Dialog>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">
+          <Typography className={classes.title}>Settings</Typography>
+        </DialogTitle>
+        {/* TODO: Add Settings as we go */}
+        <DialogContent className={classes.box}>
+          <Preferences />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleClose}
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            Save Changes
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
