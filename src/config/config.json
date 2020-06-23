@@ -3,8 +3,8 @@
     "servers": [
       {
         "name": "rucio-dev-server",
-        "hostURL": "192.168.31.200",
-        "authURL": "192.168.31.200"
+        "hostURL": "localhost",
+        "authURL": "localhost"
       }
     ],
     "authType": "USERPASS",
