@@ -15,15 +15,30 @@ $ git clone https://github.com/<your-username>/rucio-notifier.git
 $ cd rucio-notifier
 ```
 
-__Starting the React and Electron Servers (Dev)__
+__Setting up a development environment__
 
-To start the React dev server
+* Start the React dev server
 
 ```BASH
 $ npm install && npm start
 ```
 
-To run the electron app window with React. Open a new terminal window and run
+* Change the `config.json` file inside `src/config` to match your server and client details.
+
+* Start the node server to connect the React app to your Rucio deployment.
+
+  In a new terminal window:
+
+```BASH
+$ npm run dev-server
+```
+
+This shall give you the minimal dev testing setup.
+If you wish to see how the app will behave post production, you will also need to start the Electron app.
+
+* To run the electron app window with React. 
+
+  Open another terminal window and run:
 
 ```BASH
 $ npm run electron
@@ -41,7 +56,8 @@ $ rm -rf node_modules package-lock.json
 $ npm install && npm start
 ```
 
-## Notes
+## Extra Notes
 
 This project is under development as part of the Google Summer of Code 2020 project for CERN-HSF's Rucio.
 It is not yet ready for production release.
+This software is tested on Ubuntu 18.04 LTS.
