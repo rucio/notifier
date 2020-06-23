@@ -11,8 +11,9 @@ const httpsAgent = new https.Agent({ ca: fs.readFileSync(config[0].cacert) });
  * @param {NextFunction} next
  */
 function getTokenWithUserpass(req, res, next) {
+  const serverURL = config[0].servers[0].authURL;
   axios
-    .get(`https://localhost/auth/userpass`, {
+    .get(`https://${serverURL}/auth/userpass`, {
       httpsAgent,
       headers: req.body.payload,
     })
