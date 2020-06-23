@@ -8,7 +8,7 @@ import { Divider, makeStyles } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../Authentication/AuthContext";
 import { Cookies } from "react-cookie";
-import { purgeUser } from "../Utils/User";
+import { purgeUser } from "../Utils/Logic/User";
 import user from "../../config/user.json";
 
 const useStyles = makeStyles((theme) => ({
