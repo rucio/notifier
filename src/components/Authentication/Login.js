@@ -10,7 +10,8 @@ import axios from "axios";
 import LoginButton from "./LoginButton";
 import { useAuth } from "./AuthContext";
 import { Cookies } from "react-cookie";
-import { saveUser } from "../Utils/User";
+import { saveUser } from "../Utils/Logic/User";
+import AlertSnackbar from "../Utils/Design/Snackbar";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -48,6 +49,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
   const [loading, setLoading] = useState();
+  const [status, setStatus] = useState(0);
   const { setAuthtoken } = useAuth();
 
   /**
@@ -58,10 +60,21 @@ function Login() {
   }
 
   /**
+   * Updates the status to display the alert accordingly.
+   * 
+   * @param {number} value Status Code to set as status for the request.
+   */
+  function updateStatus(value) {
+    setStatus(null);
+    const newStatus = value;
+    setStatus(newStatus);
+  }
+
+  /**
    * Attempts to login using Userpass Auth Strategy.
    */
   function loginWithUserpass() {
-    localStorage.setItem('AUTH_STRATEGY', 'USERPASS');
+    localStorage.setItem("AUTH_STRATEGY", "USERPASS");
     const payload = {
       "X-Rucio-Account": account,
       "X-Rucio-Username": username,
@@ -82,15 +95,18 @@ function Login() {
         if (response.status === 200) {
           setAuthtoken(cookies.get("RUCIO_TOKEN"));
           saveUser(account, username, password);
-          setLoggedin(true);
-          console.log("%c [INFO] Logged In Successfully", "color: green;");
+          updateStatus(200);
+          setTimeout(() => setLoggedin(true), 2000);
         }
       })
       .catch((error) => {
         setLoading(loading ? false : null);
         const errorcode = Number(error.toString().split(" ").pop());
-        if (errorcode === 401)
-          console.log("%c [ERROR] Invalid Credentials", "color: red");
+        if (errorcode === 401) {
+          updateStatus(401);
+        } else if (errorcode === 500){
+          updateStatus(500);
+        }
         else console.log(error);
       });
   }
@@ -164,6 +180,9 @@ function Login() {
             Sign in
           </LoginButton>
         </form>
+        {status === 200 ? <AlertSnackbar open={true} severity="success" message="Signed in to Rucio"/> : null}
+        {status === 401 ? <AlertSnackbar open={true} severity="error" message="Invalid Credentials"/> : null}
+        {status === 500 ? <AlertSnackbar open={true} severity="error" message="Connection Error"/> : null}
       </div>
     </Container>
   );
