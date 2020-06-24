@@ -9,8 +9,8 @@ import LogoDark from "../../Layout/LogoDark";
 import axios from "axios";
 import LoginButton from "./LoginButton";
 import { useAuth } from "./AuthContext";
-import { Cookies } from "react-cookie";
-import { saveUser } from "../Utils/Logic/User";
+import { saveUser, authTokensPresent } from "../Utils/Logic/User";
+import { addServer } from "../Utils/Logic/Servers";
 import AlertSnackbar from "../Utils/Design/Snackbar";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Login() {
   const classes = useStyles();
-  const cookies = new Cookies();
   const [account, setAccount] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +60,7 @@ function Login() {
 
   /**
    * Updates the status to display the alert accordingly.
-   * 
+   *
    * @param {number} value Status Code to set as status for the request.
    */
   function updateStatus(value) {
@@ -81,10 +80,13 @@ function Login() {
       "X-Rucio-Password": password,
     };
 
+    const servers = JSON.parse(localStorage.getItem("servers"));
+
     setLoading(true);
     axios
       .post("/login/userpass", {
         payload,
+        servers,
         headers: {
           "Content-Type": "application/json",
         },
@@ -93,7 +95,8 @@ function Login() {
       .then((response) => {
         setLoading(loading ? false : null);
         if (response.status === 200) {
-          setAuthtoken(cookies.get("RUCIO_TOKEN"));
+          const auth = authTokensPresent();
+          setAuthtoken(auth);
           saveUser(account, username, password);
           updateStatus(200);
           setTimeout(() => setLoggedin(true), 2000);
@@ -104,10 +107,9 @@ function Login() {
         const errorcode = Number(error.toString().split(" ").pop());
         if (errorcode === 401) {
           updateStatus(401);
-        } else if (errorcode === 500){
+        } else if (errorcode === 500) {
           updateStatus(500);
-        }
-        else console.log(error);
+        } else console.log(error);
       });
   }
 
@@ -115,6 +117,8 @@ function Login() {
    * Handles the Login event on form submit.
    */
   function handleSubmit(event) {
+    //TODO: This line will be removed when Settings Panel is ready.
+    addServer("rucio-dev-server", "localhost", "localhost");
     if (loading) return;
     event.preventDefault();
     loginWithUserpass();
@@ -180,9 +184,27 @@ function Login() {
             Sign in
           </LoginButton>
         </form>
-        {status === 200 ? <AlertSnackbar open={true} severity="success" message="Signed in to Rucio"/> : null}
-        {status === 401 ? <AlertSnackbar open={true} severity="error" message="Invalid Credentials"/> : null}
-        {status === 500 ? <AlertSnackbar open={true} severity="error" message="Connection Error"/> : null}
+        {status === 200 ? (
+          <AlertSnackbar
+            open={true}
+            severity="success"
+            message="Signed in to Rucio"
+          />
+        ) : null}
+        {status === 401 ? (
+          <AlertSnackbar
+            open={true}
+            severity="error"
+            message="Invalid Credentials"
+          />
+        ) : null}
+        {status === 500 ? (
+          <AlertSnackbar
+            open={true}
+            severity="error"
+            message="Connection Error"
+          />
+        ) : null}
       </div>
     </Container>
   );

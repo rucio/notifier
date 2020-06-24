@@ -1,4 +1,11 @@
-const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Tray,
+  Menu,
+  nativeImage,
+} = require("electron");
 const path = require("path");
 
 let tray = undefined;
@@ -8,13 +15,13 @@ const os = require("os");
 const platforms = {
   WINDOWS: "WINDOWS",
   MAC: "MAC",
-  LINUX: "LINUX"
+  LINUX: "LINUX",
 };
 
 const platformsNames = {
   win32: platforms.WINDOWS,
   darwin: platforms.MAC,
-  linux: platforms.LINUX
+  linux: platforms.LINUX,
 };
 
 const currentPlatform = platformsNames[os.platform()];
@@ -32,45 +39,45 @@ const createTray = () => {
     {
       label: "Open App",
       click: () => {
-        showWindow('activity');
-      }
+        showWindow("activity");
+      },
     },
     {
       label: "Separator",
-      type: "separator"
+      type: "separator",
     },
     {
       label: "Show Activity",
       click: () => {
-        showWindow('activity');
-      }
+        showWindow("activity");
+      },
     },
     {
       label: "Notifications",
       click: () => {
-        showWindow('notifications');
-      }
+        showWindow("notifications");
+      },
     },
     {
       label: "Separator",
-      type: "separator"
+      type: "separator",
     },
     {
       label: "Help Centre",
       click: () => {
         showHelp();
-      }
+      },
     },
     {
       label: "Quit",
       click: () => {
         window.destroy();
         tray.destroy();
-      }
-    }
+      },
+    },
   ]);
   tray.setToolTip("Rucio Notifier");
-  tray.on("click", function(event) {
+  tray.on("click", function (event) {
     toggleWindow();
   });
   tray.setContextMenu(contextMenu);
@@ -110,16 +117,16 @@ const createWindow = () => {
     backgroundColor: "#fffafa",
     useContentSize: true,
     webPreferences: {
-      backgroundThrottling: false
-    }
+      backgroundThrottling: false,
+    },
   });
 
   // Hide the window when it loses focus
-   window.on('blur', () => {
-     if (!window.webContents.isDevToolsOpened()) {
-       window.hide()
-     }
-   })
+  window.on("blur", () => {
+    if (!window.webContents.isDevToolsOpened()) {
+      window.hide();
+    }
+  });
 };
 
 const toggleWindow = () => {
@@ -129,7 +136,7 @@ const toggleWindow = () => {
 const showWindow = (target) => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3003/app/'+target);
+  window.loadURL("http://localhost:3003/app/" + target);
   window.show();
 };
 

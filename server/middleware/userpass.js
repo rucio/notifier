@@ -8,11 +8,10 @@ const httpsAgent = new https.Agent({ ca: fs.readFileSync(config[0].cacert) });
  * Attempts to get the RUCIO_AUTH_TOKEN with USERPASS Auth Strategy
  * @param {Request} req
  * @param {Response} res
- * @param {NextFunction} next
+ * @param {String} server Server IP to get the token.
  */
-function getTokenWithUserpass(req, res, next) {
-  const serverURL = config[0].servers[0].authURL;
-  axios
+async function getTokenWithUserpass(req, res, serverURL, serverName) {
+  return axios
     .get(`https://${serverURL}/auth/userpass`, {
       httpsAgent,
       headers: req.body.payload,
@@ -22,19 +21,16 @@ function getTokenWithUserpass(req, res, next) {
         token: response.headers["x-rucio-auth-token"],
         expires: response.headers["x-rucio-auth-token-expires"],
       };
-      console.log("[INFO] Token Received");
-      res.cookie('RUCIO_TOKEN', RUCIO_TOKEN.token, {
+      console.log(`[INFO] Token Received for ${serverName}`);
+      res.cookie(`${serverName}`, RUCIO_TOKEN.token, {
         maxAge: 60 * 60 * 1000, // 1 hour
         //httpOnly: true,
       })
-      res.send(RUCIO_TOKEN).status(200);
-      next();
     })
     .catch((error) => {
       console.log(`[DEBUG] ${error}`);
       res.sendStatus(Number(error.toString().split(" ").pop()));
-      next();
     });
 }
 
-exports.getToken = getTokenWithUserpass;
+exports.getTokenWithUserpass = getTokenWithUserpass;
