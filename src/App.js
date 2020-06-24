@@ -4,12 +4,11 @@ import AppLayout from "./Layout/AppLayout";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import Login from "./components/Authentication/Login";
 import { AuthContext } from "./components/Authentication/AuthContext";
-import { Cookies } from "react-cookie";
 import "./App.css";
+import { authTokensPresent } from "./components/Utils/Logic/User";
 
 function App() {
-  const cookies = new Cookies();
-  const existingToken = cookies.get("RUCIO_TOKEN");
+  const existingToken = authTokensPresent();
   const [authtoken, setAuthtoken] = useState(existingToken);
 
   return (
