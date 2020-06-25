@@ -7,7 +7,6 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Divider, makeStyles } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../Authentication/AuthContext";
-import { Cookies } from "react-cookie";
 import { purgeUser, purgeAllTokens } from "../Utils/Logic/User";
 import user from "../../config/user.json";
 
@@ -24,7 +23,6 @@ const rucioUser = user[0].displayName;
  * Displays the profile options for the logged in user
  */
 function Profile() {
-  const cookies = new Cookies();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { setAuthtoken } = useAuth();
