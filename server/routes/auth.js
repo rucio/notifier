@@ -1,5 +1,5 @@
 const express = require("express");
-const { getTokenWithUserpass } = require("../middleware/userpass");
+const { getTokenWithUserpass } = require("../APIs/userpass");
 const { parseServers } = require("../utils/parseServers");
 const router = express.Router();
 
