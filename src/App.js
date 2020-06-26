@@ -6,6 +6,7 @@ import Login from "./components/Authentication/Login";
 import { AuthContext } from "./components/Authentication/AuthContext";
 import "./App.css";
 import { authTokensPresent } from "./components/Utils/Logic/User";
+import AddAccount from "./components/Authentication/AddAccount";
 
 function App() {
   const existingToken = authTokensPresent();
@@ -16,6 +17,7 @@ function App() {
       <Router>
         <div className="container-small">
           <Route exact path="/" component={Login} />
+          <Route path = "/adduser" component={AddAccount} />
           <PrivateRoute path="/app" component={AppLayout} />
         </div>
       </Router>
