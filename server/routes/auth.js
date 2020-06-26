@@ -14,28 +14,40 @@ function validateToken(token) {
 router.post("/login/userpass", async (req, res) => {
   const servers = req.body.servers;
   const serverURLs = parseServers(servers);
-  authCount = 0;
+  const accountList = req.body.accountList;
+  const currentUser = req.body.currentUser;
+  
+  if (JSON.stringify(accountList).indexOf(JSON.stringify(currentUser)) === -1){
+    res.sendStatus(401);
+    return;
+  } 
+
+  attemptCount = 0;
+  
   for (i = 0; i < serverURLs.length; i++) {
     try {
       await getTokenWithUserpass(
         req,
         res,
         serverURLs[i].url,
-        serverURLs[i].name
+        serverURLs[i].name,
+        accountList[i]
       );
     } catch (e) {
       console.log(e);
     }
-    authCount++;
-    if (authCount === serverURLs.length) res.sendStatus(200);
+    attemptCount++;
   }
 
-  if (res.statusCode != 200) {
+  if (res.statusCode != 200 && NOT_AUTH != 0) {
     console.log("[ERROR] Authentication Failed");
     RUCIO_TOKEN = { token: "", expires: "" };
   } else {
     console.log(`[INFO] Authenticated at Connected Servers!`);
   }
+
+  if (attemptCount === serverURLs.length && AUTH_COUNT > 0) res.sendStatus(200);
+  else if (AUTH_COUNT === 0 && NOT_AUTH > 0) res.sendStatus(401);
 });
 
 module.exports = router;

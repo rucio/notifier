@@ -10,7 +10,6 @@ import axios from "axios";
 import LoginButton from "./LoginButton";
 import { useAuth } from "./AuthContext";
 import { saveUser, authTokensPresent } from "../Utils/Logic/User";
-import { addServer } from "../Utils/Logic/Servers";
 import AlertSnackbar from "../Utils/Design/Snackbar";
 import { Button } from "@material-ui/core";
 
@@ -86,18 +85,20 @@ function Login() {
    */
   function loginWithUserpass() {
     localStorage.setItem("AUTH_STRATEGY", "USERPASS");
-    const payload = {
-      "X-Rucio-Account": account,
-      "X-Rucio-Username": username,
-      "X-Rucio-Password": password,
+    const currentUser = {
+      account: account,
+      username: username,
+      password: password,
     };
 
-    const servers = JSON.parse(localStorage.getItem("servers"));
+    const accountList = JSON.parse(localStorage.getItem('Accounts'));
+    const servers = JSON.parse(localStorage.getItem('servers'));
 
     setLoading(true);
     axios
       .post("/login/userpass", {
-        payload,
+        currentUser,
+        accountList,
         servers,
         headers: {
           "Content-Type": "application/json",
@@ -129,8 +130,6 @@ function Login() {
    * Handles the Login event on form submit.
    */
   function handleSubmit(event) {
-    //TODO: This line will be removed when Settings Panel is ready.
-    addServer("rucio-dev-server", "localhost", "localhost");
     if (loading) return;
     event.preventDefault();
     loginWithUserpass();
