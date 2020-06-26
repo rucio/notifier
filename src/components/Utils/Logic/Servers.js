@@ -7,9 +7,15 @@
  */
 export function addServer(name, hostURL, authURL) {
   const newServer = { name: name, hostURL: hostURL, authURL: authURL };
-  var servers = JSON.parse(localStorage.getItem("servers"));
-  servers.push(newServer);
-  localStorage.setItem("servers", JSON.stringify(servers));
+  try{
+    var servers = JSON.parse(localStorage.getItem("servers"));
+    servers.push(newServer);
+    localStorage.setItem("servers", JSON.stringify(servers));
+  } catch {
+    servers = []
+    servers.push(newServer);
+    localStorage.setItem("servers", JSON.stringify(servers));
+  }
 }
 
 /**

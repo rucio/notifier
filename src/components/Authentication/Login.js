@@ -12,6 +12,7 @@ import { useAuth } from "./AuthContext";
 import { saveUser, authTokensPresent } from "../Utils/Logic/User";
 import { addServer } from "../Utils/Logic/Servers";
 import AlertSnackbar from "../Utils/Design/Snackbar";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,7 +38,18 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     fontFamily: "Cern",
     fontSize: 14,
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(2, 0, 1),
+  },
+  buttonPrimary: {
+    fontFamily: "Cern",
+    fontSize: 12,
+    fontWeight: 600,
+  },
+  text: {
+    fontFamily: "Cern",
+    fontWeight: 400,
+    fontSize: 12,
+    opacity: 0.6
   },
 }));
 
@@ -184,6 +196,10 @@ function Login() {
             Sign in
           </LoginButton>
         </form>
+        <Typography className={classes.text}>New to Rucio Notifier?</Typography>
+        <Button className={classes.buttonPrimary} color="primary" href="/adduser">
+          Add your rucio account
+        </Button>
         {status === 200 ? (
           <AlertSnackbar
             open={true}
