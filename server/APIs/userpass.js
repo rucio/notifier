@@ -10,7 +10,7 @@ const httpsAgent = new https.Agent({ ca: fs.readFileSync(config[0].cacert) });
  * @param {Response} res
  * @param {String} server Server IP to get the token.
  */
-async function getTokenWithUserpass(req, res, serverURL, serverName, account) {
+async function getTokenWithUserpass(req, res, serverURL, serverName, account, currentUser) {
   return axios
     .get(`https://${serverURL}/auth/userpass`, {
       httpsAgent,
@@ -30,9 +30,11 @@ async function getTokenWithUserpass(req, res, serverURL, serverName, account) {
         maxAge: 60 * 60 * 1000, // 1 hour
       })
       AUTH_COUNT++;
+      if (account.account === currentUser.account) CREDS_VALID = true;
     })
     .catch((error) => {
       console.log(`[DEBUG] ${error}`);
+      if (account.account === currentUser.account) CREDS_VALID = false;
       NOT_AUTH++
     });
 }

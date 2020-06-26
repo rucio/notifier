@@ -16,14 +16,14 @@ router.post("/login/userpass", async (req, res) => {
   const serverURLs = parseServers(servers);
   const accountList = req.body.accountList;
   const currentUser = req.body.currentUser;
-  
-  if (JSON.stringify(accountList).indexOf(JSON.stringify(currentUser)) === -1){
+
+  if (JSON.stringify(accountList).indexOf(JSON.stringify(currentUser)) === -1) {
     res.sendStatus(401);
     return;
-  } 
+  }
 
   attemptCount = 0;
-  
+
   for (i = 0; i < serverURLs.length; i++) {
     try {
       await getTokenWithUserpass(
@@ -31,7 +31,8 @@ router.post("/login/userpass", async (req, res) => {
         res,
         serverURLs[i].url,
         serverURLs[i].name,
-        accountList[i]
+        accountList[i],
+        currentUser
       );
     } catch (e) {
       console.log(e);
@@ -46,8 +47,9 @@ router.post("/login/userpass", async (req, res) => {
     console.log(`[INFO] Authenticated at Connected Servers!`);
   }
 
-  if (attemptCount === serverURLs.length && AUTH_COUNT > 0) res.sendStatus(200);
-  else if (AUTH_COUNT === 0 && NOT_AUTH > 0) res.sendStatus(401);
+  if (!CREDS_VALID) res.sendStatus(401);
+  else if (attemptCount === serverURLs.length && AUTH_COUNT > 0) res.sendStatus(200);
+  else res.sendStatus(500);
 });
 
 module.exports = router;
