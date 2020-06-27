@@ -6,6 +6,9 @@ const port = 3004;
 const app = express();
 
 RUCIO_TOKEN = {token: "", expires: ""};
+AUTH_COUNT = 0;
+NOT_AUTH = 0;
+CREDS_VALID = false;
 
 app.use(cors({ origin: "http://localhost:3003" }));
 app.use(express.json());

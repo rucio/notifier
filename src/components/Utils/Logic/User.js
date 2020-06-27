@@ -50,3 +50,37 @@ export function purgeAllTokens() {
     cookies.remove(tokenKeys[i], { path: "/" });
   }
 }
+
+/**
+ * Adds a new account to Accounts in the localstorage.
+ * 
+ * @param {String} account New Rucio Account
+ * @param {String} username Rucio Username
+ * @param {String} password Rucio Password
+ */
+export function addNewAccount(account, username, password){
+  const newAccount = {
+    account: account,
+    username: username,
+    password: password
+  }
+  try{
+    var Accounts = JSON.parse(localStorage.getItem('Accounts'))
+    Accounts.push(newAccount);
+    localStorage.setItem('Accounts', JSON.stringify(Accounts));
+  }
+  catch{
+    Accounts = []
+    Accounts.push(newAccount);
+    localStorage.setItem('Accounts', JSON.stringify(Accounts));
+  }
+  
+}
+
+/**
+ * Saves the Cert location in the storage as 'usercert'
+ * @param {String} certlocation 
+ */
+export function saveCertLocation(certlocation){
+  localStorage.setItem('usercert', certlocation);
+}

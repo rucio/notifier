@@ -10,8 +10,8 @@ import axios from "axios";
 import LoginButton from "./LoginButton";
 import { useAuth } from "./AuthContext";
 import { saveUser, authTokensPresent } from "../Utils/Logic/User";
-import { addServer } from "../Utils/Logic/Servers";
 import AlertSnackbar from "../Utils/Design/Snackbar";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,7 +37,18 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     fontFamily: "Cern",
     fontSize: 14,
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(2, 0, 1),
+  },
+  buttonPrimary: {
+    fontFamily: "Cern",
+    fontSize: 12,
+    fontWeight: 600,
+  },
+  text: {
+    fontFamily: "Cern",
+    fontWeight: 400,
+    fontSize: 12,
+    opacity: 0.6
   },
 }));
 
@@ -74,18 +85,20 @@ function Login() {
    */
   function loginWithUserpass() {
     localStorage.setItem("AUTH_STRATEGY", "USERPASS");
-    const payload = {
-      "X-Rucio-Account": account,
-      "X-Rucio-Username": username,
-      "X-Rucio-Password": password,
+    const currentUser = {
+      account: account,
+      username: username,
+      password: password,
     };
 
-    const servers = JSON.parse(localStorage.getItem("servers"));
+    const accountList = JSON.parse(localStorage.getItem('Accounts'));
+    const servers = JSON.parse(localStorage.getItem('servers'));
 
     setLoading(true);
     axios
       .post("/login/userpass", {
-        payload,
+        currentUser,
+        accountList,
         servers,
         headers: {
           "Content-Type": "application/json",
@@ -117,8 +130,6 @@ function Login() {
    * Handles the Login event on form submit.
    */
   function handleSubmit(event) {
-    //TODO: This line will be removed when Settings Panel is ready.
-    addServer("rucio-dev-server", "localhost", "localhost");
     if (loading) return;
     event.preventDefault();
     loginWithUserpass();
@@ -184,6 +195,10 @@ function Login() {
             Sign in
           </LoginButton>
         </form>
+        <Typography className={classes.text}>New to Rucio Notifier?</Typography>
+        <Button className={classes.buttonPrimary} color="primary" href="/adduser">
+          Add your rucio account
+        </Button>
         {status === 200 ? (
           <AlertSnackbar
             open={true}
