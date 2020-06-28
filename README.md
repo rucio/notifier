@@ -1,6 +1,6 @@
 <p align="center">
   <a href="">
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/85955732-5594ae00-b99e-11ea-8250-73b5fa46f30d.png" width=100% />
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/85955840-2cc0e880-b99f-11ea-9ed2-03b9d854bcca.png" width=100% />
   </a>
 </p>
 
