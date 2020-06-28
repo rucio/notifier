@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="">
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/85955732-5594ae00-b99e-11ea-8250-73b5fa46f30d.png" width=100% />
+  </a>
+</p>
+
 # notifier
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/react?style=flat-square)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/dev/electron?style=flat-square)
