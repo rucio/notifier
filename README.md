@@ -1,3 +1,7 @@
+<p align="center">
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/85955878-5a0d9680-b99f-11ea-9721-b1e5e616612a.png" width=100% />
+</p>
+
 # notifier
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/react?style=flat-square)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/dev/electron?style=flat-square)
@@ -15,15 +19,13 @@ $ git clone https://github.com/<your-username>/rucio-notifier.git
 $ cd rucio-notifier
 ```
 
-__Setting up a development environment__
+#### Using the software in dev mode.
 
 * Start the React dev server
 
 ```BASH
 $ npm install && npm start
 ```
-
-* Change the `config.json` file inside `src/config` to match your server and client details.
 
 * Start the node server to connect the React app to your Rucio deployment.
 
@@ -45,6 +47,17 @@ $ npm run electron
 ```
 
 This will start the React dev server inside of an Electron window. Any changes will be refleted live in the app.
+
+#### Connecting your Rucio Account
+
+After you start the app for the first time, you'll need to connect your Rucio account to the app.
+Simply click on __Add your Rucio account__ and setup a new account with your USERPASS credentials, and the server details.
+
+After setting up the account, you'll be able to log into the app using that account.
+
+#### Adding Multiple Rucio Accounts
+
+You can also set up multiple Rucio Accounts to see notifications from them on the app. Simply add more accounts from __Add your Rucio account__ utility from the Login screen and log in to the app using any added account.
 
 ## Troubleshooting
 
