@@ -21,24 +21,16 @@ $ cd rucio-notifier
 
 #### Using the software in dev mode.
 
-* Start the React dev server
+* For starting the software in development mode.
 
 ```BASH
-$ npm install && npm start
-```
-
-* Start the node server to connect the React app to your Rucio deployment.
-
-  In a new terminal window:
-
-```BASH
-$ npm run dev-server
+$ npm install && npm run dev
 ```
 
 This shall give you the minimal dev testing setup.
 If you wish to see how the app will behave post production, you will also need to start the Electron app.
 
-* To run the electron app window with React. 
+* To run the desktop app window for the software. 
 
   Open another terminal window and run:
 
@@ -46,7 +38,7 @@ If you wish to see how the app will behave post production, you will also need t
 $ npm run electron
 ```
 
-This will start the React dev server inside of an Electron window. Any changes will be refleted live in the app.
+This will start Rucio Notifier inside of an Electron window. Any changes will be refleted live in the app.
 
 #### Connecting your Rucio Account
 
