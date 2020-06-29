@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "electron": "electron ./",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
-    "server": "cd server && node app.js",
+    "dev": "concurrently \"npm start\" \"wait-on http://localhost:3003 && npm run dev-server\"",
     "dev-server": "cd server && nodemon app.js"
   },
   "eslintConfig": {
@@ -48,8 +48,10 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "electron": "7.0.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "wait-on": "^5.0.1"
   },
   "proxy": "http://localhost:3004"
 }
