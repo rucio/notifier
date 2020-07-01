@@ -6,7 +6,7 @@ router.post("/getallrules", async (req, res) => {
   const certlocation = req.body.certlocation;
   const accountRules = [];
 
-  for (i = 0; i < accounts.length; i++) {
+  for (let i = 0; i < accounts.length; i++) {
     await listRules(
       certlocation,
       accounts[i].server.hostURL,
