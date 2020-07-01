@@ -1,6 +1,6 @@
 import { Cookies } from "react-cookie";
 import { getAllServersByNames } from "./Servers";
-import { getAvailableTokens, refreshToken } from "./Tokens";
+import { getAvailableTokens } from "./Tokens";
 const cookies = new Cookies();
 
 /**
@@ -26,6 +26,9 @@ export function purgeUser() {
   localStorage.removeItem("CURR_PASSWORD");
 }
 
+/**
+ * Returns an object with current user's credentials
+ */
 export function currentUser() {
   return {
     account: localStorage.getItem("CURR_ACCOUNT"),

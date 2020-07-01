@@ -23,7 +23,11 @@ export function getAvailableTokens() {
   return tokens;
 }
 
-export function refreshToken(payload) {
+/**
+ * Performs a token refresh with current user's valid credentials through Userpass.
+ * @param {{account: String, username: String, password: String}} payload Current User credentials
+ */
+export async function refreshToken(payload) {
   const currentUser = {
     account: payload.account,
     username: payload.username,

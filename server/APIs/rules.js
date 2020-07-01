@@ -1,7 +1,6 @@
 const axios = require("axios");
 const https = require("https");
 const fs = require("fs");
-const { response } = require("express");
 
 /**
  * Returns an object with all the rules of a user from a particular server.
@@ -17,19 +16,5 @@ async function listRules(certlocation, hostAddress, token) {
     headers: { "X-Rucio-Auth-Token": token },
   });
 }
-
-/**
- * Gets the information about a particular rule from the Server using Rule ID.
- *
- * @param {String} server Takes in server URL or URL specified in config.json
- * @param {String} ruleID Rule ID to get the info for the particular rule.
- */
-// export function getRuleInfo(server, ruleID) {
-//   const serverURL = server || config[0].servers.hostURL;
-//   axios
-//     .get(`https://${serverURL}/rule/${ruleID}`, token)
-//     .then((response) => console.log(response.data))
-//     .catch((error) => console.log(error));
-// }
 
 exports.listRules = listRules;
