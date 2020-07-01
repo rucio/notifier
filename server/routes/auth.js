@@ -3,14 +3,6 @@ const { getTokenWithUserpass } = require("../APIs/userpass");
 const { parseServers } = require("../utils/parseServers");
 const router = express.Router();
 
-/**
- * Checks if the token is still valid at the current time.
- * @param {{token: String, expires: String}} token RUCIO_AUTH_TOKEN object
- */
-function validateToken(token) {
-  return Date.now() < Date.parse(token.expires);
-}
-
 router.post("/login/userpass", async (req, res) => {
   const servers = req.body.servers;
   const serverURLs = parseServers(servers);
