@@ -1,20 +1,21 @@
-import axios from "axios";
-import { Cookies } from "react-cookie";
-const cookies = new Cookies();
-/**
- * List all the rules of the current user.
- * @param {String} serverURL Takes in Server URL.
- * @param {String} serverName Takes in the server name for getting the token.
- */
-export function listScopes(serverName, serverURL) {
-  const token = {"X-Rucio-Auth-Token": cookies.get(serverName)};
+const axios = require("axios");
+const https = require("https");
+const fs = require("fs");
+const { response } = require("express");
 
-  axios
-    .get(`https://${serverURL}/scopes`, token)
-    .then((response) => console.log(response.data))
-    .catch((error) => {
-      console.log(error);
-    });
+/**
+ * Returns an object with all the rules of a user from a particular server.
+ * @param {String} certlocation Location of User Cert for Authentication at the server.
+ * @param {String} hostAddress Server's hostname from where the rules need to be retrieved.
+ * @param {String} token Rucio Auth Token.
+ */
+async function listRules(certlocation, hostAddress, token) {
+  const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
+  return axios.get(`https://${hostAddress}/rules/`, {
+    httpsAgent,
+    headers: { "X-Rucio-Auth-Token": token },
+  });
 }
 
 /**
@@ -30,3 +31,5 @@ export function listScopes(serverName, serverURL) {
 //     .then((response) => console.log(response.data))
 //     .catch((error) => console.log(error));
 // }
+
+exports.listRules = listRules;
