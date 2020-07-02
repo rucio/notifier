@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
-import MessageItem from "./MessageItem";
-import demoActivity from "./DemoActivity";
+import demoRules from "./DemoRules";
 import NoActivity from "./NoActivity";
+import { IconButton } from "@material-ui/core";
+import RefreshIcon from "@material-ui/icons/Refresh";
+import RuleCard from "./Rules/RuleCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,10 +15,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fffafa",
     overflowX: "hidden",
     overflow: "auto",
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
+    justifyContent: "space-between",
   },
   item: {
     width: 334,
-    padding: 5,
   },
   title: {
     margin: theme.spacing(4, 0, 2),
@@ -27,6 +32,7 @@ const spanStyle = {
   fontFamily: "Cern, sans-serif",
   fontWeight: 700,
   fontSize: 24,
+  padding: 5,
   color: "#3e55ab",
 };
 
@@ -37,7 +43,7 @@ const spanStyle = {
  */
 export default function ActivityList(props) {
   const classes = useStyles();
-  const [activity] = useState(demoActivity);
+  const [activity] = useState(demoRules);
 
   function expandActivity(i) {
     console.log(`Activity No ${i} Clicked`);
@@ -45,19 +51,35 @@ export default function ActivityList(props) {
 
   return (
     <React.Fragment>
-      <div style={{ padding: 5, width: "100%" }} id="title">
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+        id="title"
+      >
         <span style={spanStyle}>Recent Activity</span>
+        <IconButton>
+          <RefreshIcon fontSize="small" />
+        </IconButton>
       </div>
       <Grid id="activity-grid" className={classes.root}>
         <List dense={false} className={classes.item}>
           {activity.length !== 0 ? (
             activity.map((item, i) => (
-              <MessageItem
+              <RuleCard
+                status={"REPLICATING"}
+                id={item.id}
+                didName={`${item.scope}:${item.name}`}
+                rseName={item.rse_expression}
+                updatedAt={"3h ago"}
+                copies={item.copies}
+                rseType={"Tape"}
+                rseLocation={"CH"}
                 key={item.id}
-                primary={item.primary}
-                secondary={item.secondary}
-                server={item.server}
-                read={item.read}
+                watching={true}
                 onClick={(e) => expandActivity(i)}
               />
             ))
