@@ -1,5 +1,5 @@
 import React from "react";
-import RuleList from "./RuleList";
+import AllRules from "./AllRules";
 
 const spanStyle = {
   fontFamily: "Cern, sans-serif",
@@ -14,7 +14,7 @@ function WatchRules() {
       <div style={{ padding: 5, width: "100%" }} id="title">
         <span style={spanStyle}>Your Rules</span>
       </div>
-      <RuleList/>
+      <AllRules/>
     </React.Fragment>
   );
 }

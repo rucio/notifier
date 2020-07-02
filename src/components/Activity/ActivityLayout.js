@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import ActivityList from "./ActivityList";
 import AddRuleButton from "./Rules/AddRuleButton"
 import WatchRules from "./Rules/WatchRules";
-import { getRules } from "./Rules/RuleList";
+import { getRules } from "../Utils/Logic/Rules";
 
 function Activity() {
   const [watchrules, setWatchRules] = useState(false);
