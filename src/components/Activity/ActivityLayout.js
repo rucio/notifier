@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import ActivityList from "./ActivityList";
 import AddRuleButton from "./Rules/AddRuleButton"
-import WatchRules from "./Rules/WatchRules";
-import { getRules } from "../Utils/Logic/Rules";
+import AllRules from "./Rules/AllRules";
 
 function Activity() {
   const [watchrules, setWatchRules] = useState(false);
 
   function handleChange(e) {
     const ruleState = watchrules;
-    getRules();
     setWatchRules(!ruleState);
   }
 
@@ -30,7 +28,7 @@ function Activity() {
         bgcolor="#fffafa"
         css={{ maxWidth: 360, height: 375 }}
       >
-        {watchrules ? <WatchRules/> : <ActivityList />}
+        {watchrules ? <AllRules/> : <ActivityList />}
         <AddRuleButton handleChange={handleChange} watchrules={watchrules}/>
       </Box>
     </div>

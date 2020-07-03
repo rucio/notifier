@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
-import demoRules from "./DemoRules";
 import NoActivity from "./NoActivity";
 import { IconButton } from "@material-ui/core";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import RuleCard from "./Rules/RuleCard";
+import { getRules } from "../Utils/Logic/Rules";
+import { getAvailableTokens } from "../Utils/Logic/Tokens";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,11 +44,34 @@ const spanStyle = {
  */
 export default function ActivityList(props) {
   const classes = useStyles();
-  const [activity] = useState(demoRules);
+  const [rules, setRules] = useState([]);
+  const [fetched, setFetched] = useState(false);
 
-  function expandActivity(i) {
-    console.log(`Activity No ${i} Clicked`);
+  async function fetchRules() {
+    const tokens = getAvailableTokens();
+    var parsedNewRules = [];
+    await getRules().then((response) => {
+      for (let i = 0; i < tokens.length; i++) {
+        const newRules = response.data[tokens[i].servername];
+        var parsedRules = newRules.map((element) => {
+          return JSON.parse(element);
+        });
+        parsedNewRules[tokens[i].servername] = parsedRules;
+      }
+      console.log(parsedNewRules);
+      setRules(parsedNewRules);
+      setFetched(true);
+    });
   }
+
+  React.useEffect(() => {
+    try{
+      fetchRules()
+      setInterval(() => {fetchRules()}, 20 * 60 * 1000);
+    }catch(e){
+      console.log(e)
+    }
+  }, []);
 
   return (
     <React.Fragment>
@@ -61,28 +85,36 @@ export default function ActivityList(props) {
         id="title"
       >
         <span style={spanStyle}>Recent Activity</span>
-        <IconButton>
+        <IconButton onClick={fetchRules}>
           <RefreshIcon fontSize="small" />
         </IconButton>
       </div>
       <Grid id="activity-grid" className={classes.root}>
         <List dense={false} className={classes.item}>
-          {activity.length !== 0 ? (
-            activity.map((item, i) => (
-              <RuleCard
-                status={"REPLICATING"}
-                id={item.id}
-                didName={`${item.scope}:${item.name}`}
-                rseName={item.rse_expression}
-                updatedAt={"3h ago"}
-                copies={item.copies}
-                rseType={"Tape"}
-                rseLocation={"CH"}
-                key={item.id}
-                watching={true}
-                onClick={(e) => expandActivity(i)}
-              />
-            ))
+          {fetched ? (
+            getAvailableTokens().map((token) =>
+              rules[token.servername].map((item) =>
+                item.state === "REPLICATING" ? (
+                  <RuleCard
+                    status={item.state}
+                    id={item.id}
+                    didName={`${item.scope}:${item.name}`}
+                    rseName={item.rse_expression}
+                    updatedAt={item.updated_at}
+                    copies={item.copies}
+                    rseType={"Tape"}
+                    rseLocation={"CH"}
+                    key={item.id}
+                    watching={true}
+                    locks={{
+                      ok: item.locks_ok_cnt,
+                      rep: item.locks_replicating_cnt,
+                      stuck: item.locks_stuck_cnt,
+                    }}
+                  />
+                ) : null
+              )
+            )
           ) : (
             <NoActivity />
           )}
