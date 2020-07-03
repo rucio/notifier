@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const axios = require("axios");
 const https = require("https");
 const fs = require("fs");
@@ -21,7 +22,7 @@ async function getTokenWithUserpass(req, res, serverURL, serverName, account, cu
       },
     })
     .then((response) => {
-      RUCIO_TOKEN = {
+      var RUCIO_TOKEN = {
         token: response.headers["x-rucio-auth-token"],
         expires: response.headers["x-rucio-auth-token-expires"],
       };

@@ -5,7 +5,7 @@
  */
 function parseServers(object) {
   let serverURLs = [];
-  for (i = 0; i < object.length; i++) {
+  for (let i = 0; i < object.length; i++) {
     serverURLs.push({name: object[i].name, url: object[i].authURL});
   }
 
@@ -14,7 +14,7 @@ function parseServers(object) {
 
 function printServerList(serversList) {
   const object = parseServers(serversList);
-  for (i = 0; i < object.length; i++) {
+  for (let i = 0; i < object.length; i++) {
     console.log(object[i]);
   }
 }

@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import ActivityList from "./ActivityList";
-
-const spanStyle = {
-  fontFamily: "Cern, sans-serif",
-  fontWeight: 700,
-  fontSize: 24,
-  color: "#3e55ab",
-};
+import AddRuleButton from "./Rules/AddRuleButton"
+import AllRules from "./Rules/AllRules";
 
 function Activity() {
+  const [watchrules, setWatchRules] = useState(false);
+
+  function handleChange(e) {
+    const ruleState = watchrules;
+    setWatchRules(!ruleState);
+  }
+
+  React.useEffect(() => {
+    console.log(watchrules);
+  }, [watchrules]);
+
   return (
     <div style={{ width: "100%" }}>
       <Box
@@ -22,10 +28,8 @@ function Activity() {
         bgcolor="#fffafa"
         css={{ maxWidth: 360, height: 375 }}
       >
-        <div style={{ padding: 5, width: "100%" }} id="title">
-          <span style={spanStyle}>Recent Activity</span>
-        </div>
-        <ActivityList />
+        {watchrules ? <AllRules/> : <ActivityList />}
+        <AddRuleButton handleChange={handleChange} watchrules={watchrules}/>
       </Box>
     </div>
   );
