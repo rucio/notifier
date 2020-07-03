@@ -1,19 +1,22 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
+import VisibilitySharpIcon from '@material-ui/icons/VisibilitySharp';
 
 const useStyles = makeStyles((theme) => ({
   button: {
     fontFamily: "Cern",
     fontSize: 14,
     color: "#000000",
-    opacity: 0.6,
     textTransform: "none",
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
+    fontWeight: 500
   },
+  icon: {
+    opacity: 0.6,
+  }
 }));
 
 function AddRuleButton(props) {
@@ -22,12 +25,12 @@ function AddRuleButton(props) {
   return (
     <Button className={classes.button} onClick={(e) => props.handleChange(e)}>
       {props.watchrules ? (
-        <span style={{ marginTop: 5, marginLeft: 10 }}>Save Changes</span>
+        <span style={{ marginTop: 5, marginLeft: 10, color: "#3e55ab"}}>Back to Activity</span>
       ) : (
         <React.Fragment>
-          <AddIcon fontSize="inherit" />
-          <span style={{ marginTop: 5, marginLeft: 10 }}>
-            Add Rules to watch
+          <VisibilitySharpIcon className={classes.icon} fontSize="inherit" />
+          <span style={{ marginTop: 5, marginLeft: 10, opacity: 0.6 }}>
+            See all rules
           </span>
         </React.Fragment>
       )}
