@@ -58,18 +58,19 @@ export default function ActivityList(props) {
         });
         parsedNewRules[tokens[i].servername] = parsedRules;
       }
-      console.log(parsedNewRules);
       setRules(parsedNewRules);
       setFetched(true);
     });
   }
 
   React.useEffect(() => {
-    try{
-      fetchRules()
-      setInterval(() => {fetchRules()}, 20 * 60 * 1000);
-    }catch(e){
-      console.log(e)
+    try {
+      fetchRules();
+      setInterval(() => {
+        fetchRules();
+      }, 20 * 60 * 1000);
+    } catch (e) {
+      console.log(e);
     }
   }, []);
 
@@ -102,8 +103,8 @@ export default function ActivityList(props) {
                     rseName={item.rse_expression}
                     updatedAt={item.updated_at}
                     copies={item.copies}
-                    rseType={"Tape"}
-                    rseLocation={"CH"}
+                    // rseType={"Tape"}
+                    // rseLocation={"CH"}
                     key={item.id}
                     watching={true}
                     locks={{
@@ -111,6 +112,12 @@ export default function ActivityList(props) {
                       rep: item.locks_replicating_cnt,
                       stuck: item.locks_stuck_cnt,
                     }}
+                    account={item.account}
+                    server={token.servername}
+                    expiredAt={item.expires_at}
+                    stuckAt={item.stuck_at}
+                    didType={item.did_type}
+                    createdAt={item.created_at}
                   />
                 ) : null
               )

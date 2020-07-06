@@ -12,10 +12,6 @@ function Activity() {
     setWatchRules(!ruleState);
   }
 
-  React.useEffect(() => {
-    console.log(watchrules);
-  }, [watchrules]);
-
   return (
     <div style={{ width: "100%" }}>
       <Box
