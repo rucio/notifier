@@ -73,7 +73,6 @@ export default function AllRules() {
         });
         parsedNewRules[tokens[i].servername] = parsedRules;
       }
-      console.log(parsedNewRules)
       setRules(parsedNewRules);
       setFetched(true);
     });
@@ -110,21 +109,27 @@ export default function AllRules() {
                   >{`Server: ${token.servername}`}</ListSubheader>
                   {rules[token.servername].map((item) => (
                     <RuleCard
-                      status={item.state}
-                      id={item.id}
-                      didName={`${item.scope}:${item.name}`}
-                      rseName={item.rse_expression}
-                      updatedAt={item.updated_at}
-                      copies={item.copies}
-                      rseType={"Tape"}
-                      rseLocation={"CH"}
-                      key={item.id}
-                      locks={{
-                        ok: item.locks_ok_cnt,
-                        rep: item.locks_replicating_cnt,
-                        stuck: item.locks_stuck_cnt,
-                      }}
-                      watching={false}
+                    status={item.state}
+                    id={item.id}
+                    didName={`${item.scope}:${item.name}`}
+                    rseName={item.rse_expression}
+                    updatedAt={item.updated_at}
+                    copies={item.copies}
+                    // rseType={"Tape"}
+                    // rseLocation={"CH"}
+                    key={item.id}
+                    watching={true}
+                    locks={{
+                      ok: item.locks_ok_cnt,
+                      rep: item.locks_replicating_cnt,
+                      stuck: item.locks_stuck_cnt,
+                    }}
+                    account={item.account}
+                    server={token.servername}
+                    expiredAt={item.expires_at}
+                    stuckAt={item.stuck_at}
+                    didType={item.did_type}
+                    createdAt={item.created_at}
                     />
                   ))}
                 </ul>
