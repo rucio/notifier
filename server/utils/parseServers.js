@@ -12,11 +12,4 @@ function parseServers(object) {
   return serverURLs;
 }
 
-function printServerList(serversList) {
-  const object = parseServers(serversList);
-  for (let i = 0; i < object.length; i++) {
-    console.log(object[i]);
-  }
-}
-
 exports.parseServers = parseServers;
