@@ -133,7 +133,6 @@ const toggleWindow = () => {
 const showWindow = (target) => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
-  console.log('http://localhost:3004/app/' + target)
   window.loadURL(isDev
     ? 'http://localhost:3003/#/app/' + target
     : 'http://localhost:3004/#/app/' + target);

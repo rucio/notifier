@@ -6,7 +6,13 @@ const router = express.Router();
 
 router.post("/login/userpass", async (req, res) => {
   const servers = req.body.servers;
-  const serverURLs = parseServers(servers);
+  var serverURLs = null;
+  try {
+    serverURLs = parseServers(servers);
+  } catch {
+    res.sendStatus(401);
+    return;
+  }
   const accountList = req.body.accountList;
   const currentUser = req.body.currentUser;
   const certlocation = req.body.certlocation;
@@ -42,7 +48,8 @@ router.post("/login/userpass", async (req, res) => {
   }
 
   if (!CREDS_VALID) res.sendStatus(401);
-  else if (attemptCount === serverURLs.length && AUTH_COUNT > 0) res.sendStatus(200);
+  else if (attemptCount === serverURLs.length && AUTH_COUNT > 0)
+    res.sendStatus(200);
   else res.sendStatus(500);
 });
 
