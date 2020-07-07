@@ -93,10 +93,11 @@ function Login() {
 
     const accountList = JSON.parse(localStorage.getItem('Accounts'));
     const servers = JSON.parse(localStorage.getItem('servers'));
-
+    const certlocation = localStorage.getItem("usercert");
     setLoading(true);
     axios
       .post("/login/userpass", {
+        certlocation,
         currentUser,
         accountList,
         servers,
@@ -196,7 +197,7 @@ function Login() {
           </LoginButton>
         </form>
         <Typography className={classes.text}>New to Rucio Notifier?</Typography>
-        <Button className={classes.buttonPrimary} color="primary" href="/adduser">
+        <Button className={classes.buttonPrimary} color="primary" href="#/adduser">
           Add your rucio account
         </Button>
         {status === 200 ? (

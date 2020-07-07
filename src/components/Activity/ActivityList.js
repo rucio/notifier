@@ -42,7 +42,7 @@ const spanStyle = {
  * @param {*} props from Parent Component
  * @property {string} props.title - Set the title for the page.
  */
-export default function ActivityList(props) {
+export default function ActivityList() {
   const classes = useStyles();
   const [rules, setRules] = useState([]);
   const [fetched, setFetched] = useState(false);

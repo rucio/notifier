@@ -9,6 +9,7 @@ router.post("/login/userpass", async (req, res) => {
   const serverURLs = parseServers(servers);
   const accountList = req.body.accountList;
   const currentUser = req.body.currentUser;
+  const certlocation = req.body.certlocation;
 
   if (JSON.stringify(accountList).indexOf(JSON.stringify(currentUser)) === -1) {
     res.sendStatus(401);
@@ -25,7 +26,8 @@ router.post("/login/userpass", async (req, res) => {
         serverURLs[i].url,
         serverURLs[i].name,
         accountList[i],
-        currentUser
+        currentUser,
+        certlocation
       );
     } catch (e) {
       console.log(e);
