@@ -197,7 +197,7 @@ function Login() {
           </LoginButton>
         </form>
         <Typography className={classes.text}>New to Rucio Notifier?</Typography>
-        <Button className={classes.buttonPrimary} color="primary" href="#/adduser">
+        <Button className={classes.buttonPrimary} color="primary" href="/adduser">
           Add your rucio account
         </Button>
         {status === 200 ? (

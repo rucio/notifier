@@ -1,7 +1,7 @@
 import React from "react";
 import Activity from "../components/Activity/ActivityLayout";
 import Notifications from "../components/Notifications/Notifications";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
