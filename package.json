@@ -4,8 +4,12 @@
   "homepage": "./",
   "version": "0.1.0",
   "private": true,
-  "main": "./src/main.js",
+  "main": "public/electron.js",
   "license": "Apache-2.0",
+  "author": {
+    "name": "Vivek Nigam",
+    "email": "viveknigam.nigam3@gmail.com"
+  },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
@@ -21,17 +25,20 @@
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "electron-is-dev": "^1.2.0"
   },
   "scripts": {
     "start": "PORT=3003 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "electron ./",
+    "electron": "electron .",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "dev": "concurrently \"npm start\" \"wait-on http://localhost:3003 && npm run dev-server\"",
-    "dev-server": "cd server && nodemon app.js"
+    "dev-server": "cd server && nodemon app.js",
+    "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
+    "preelectron-pack": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,8 +58,20 @@
   "devDependencies": {
     "concurrently": "^5.2.0",
     "electron": "7.0.0",
+    "electron-builder": "^22.7.0",
     "nodemon": "^2.0.4",
     "wait-on": "^5.0.1"
+  },
+  "build": {
+    "appId": "com.rucio.notifier",
+    "files": [
+      "build/**/*",
+      "server/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   },
   "proxy": "http://localhost:3004"
 }
