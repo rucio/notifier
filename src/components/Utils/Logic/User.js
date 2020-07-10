@@ -15,6 +15,7 @@ export function saveUser(account, username, password) {
   localStorage.setItem("CURR_ACCOUNT", account);
   localStorage.setItem("CURR_USERNAME", username);
   localStorage.setItem("CURR_PASSWORD", password);
+  localStorage.setItem("APP_USER", "Rucio User")
 }
 
 /**
