@@ -109,6 +109,7 @@ function Login() {
       .then((response) => {
         setLoading(loading ? false : null);
         if (response.status === 200) {
+          //Setting the AUTH Token
           const auth = authTokensPresent();
           setAuthtoken(auth);
           saveUser(account, username, password);

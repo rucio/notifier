@@ -46,9 +46,7 @@ function MyAccountContent() {
       >
         User
       </div>
-      
-        <div className={classes.title}>{localStorage.getItem("APP_USER")}</div>
-    
+      <div className={classes.title}>{localStorage.getItem("APP_USER")}</div>
       <UserAccounts />
       <Servers />
       <Certificate />

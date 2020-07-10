@@ -17,7 +17,7 @@ function App() {
       <Router>
         <div className="container-small">
           <Route exact path="/" component={Login} />
-          <Route exact path = "/adduser" component={AddAccount} />
+          <Route exact path="/adduser" component={AddAccount} />
           <PrivateRoute path="/app" component={AppLayout} />
         </div>
       </Router>
