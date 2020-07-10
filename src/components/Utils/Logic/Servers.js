@@ -1,3 +1,5 @@
+import { Cookies } from "react-cookie";
+
 /**
  * Adds a server to the the localstorage.
  * 
@@ -34,4 +36,21 @@ export function getAllServersByNames() {
   }
 
   return serverNames;
+}
+
+export function serverStatus() {
+  const cookies = new Cookies();
+  let status = [];
+  const servernames = getAllServersByNames();
+
+  //UPDATE LOGIC! THIS DOESN'T WORK
+  for (let i = 0; i < servernames.length; i++){
+    if (cookies.get(servernames[i]) !== undefined)
+      status.push({server: servernames[i], status: "Connected"})
+    else {
+      status.push({server: servernames[i], status: "Disconnected"})
+    }
+  }
+  
+  return status;
 }
