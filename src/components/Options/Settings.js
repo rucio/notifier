@@ -1,13 +1,11 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import SettingsIcon from "@material-ui/icons/Settings";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles, Typography } from "@material-ui/core";
-import Preferences from "./Preferences";
+import Preferences from "./SettingsContent";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -19,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
   box: {
     fontFamily: "Cern, sans-serif",
     backgroundColor: "#fffafa",
-    width: 340,
+    width: 240,
     height: 300,
+    padding: "16px 24px"
   },
   button: {
     fontFamily: "Cern, sans-serif",
@@ -63,7 +62,7 @@ function Settings() {
         <DialogContent className={classes.box}>
           <Preferences />
         </DialogContent>
-        <DialogActions>
+        {/* <DialogActions>
           <Button
             onClick={handleClose}
             variant="contained"
@@ -72,7 +71,7 @@ function Settings() {
           >
             Save Changes
           </Button>
-        </DialogActions>
+        </DialogActions> */}
       </Dialog>
     </div>
   );
