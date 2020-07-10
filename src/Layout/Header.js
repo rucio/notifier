@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Settings from "../components/Options/Settings"
-import Profile from "../components/Options/Profile"
+import ProfileMenu from "../components/Options/ProfileMenu"
 import Logo from "./Logo";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +35,7 @@ export default function Header() {
           <Logo />
           <Typography className={classes.title} noWrap />
           <Settings />
-          <Profile />
+          <ProfileMenu />
         </Toolbar>
       </AppBar>
     </div>
