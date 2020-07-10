@@ -35,11 +35,13 @@ export async function refreshToken(payload) {
   };
   const accountList = JSON.parse(localStorage.getItem("Accounts"));
   const servers = JSON.parse(localStorage.getItem("servers"));
-
+  const certlocation = localStorage.getItem("usercert")
+  
   return axios.post("/login/userpass", {
     currentUser,
     accountList,
     servers,
+    certlocation,
     headers: {
       "Content-Type": "application/json",
     },

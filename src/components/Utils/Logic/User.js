@@ -30,7 +30,7 @@ export function purgeUser() {
 /**
  * Returns an object with current user's credentials
  */
-export function currentUser() {
+export function getCurrentUser() {
   return {
     account: localStorage.getItem("CURR_ACCOUNT"),
     username: localStorage.getItem("CURR_USERNAME"),
