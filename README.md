@@ -34,6 +34,21 @@ After setting up the account, you'll be able to log into the app using that acco
 
 You can also set up multiple Rucio Accounts to see notifications from them on the app. Simply add more accounts from __Add your Rucio account__ utility from the Login screen and log in to the app using any added account.
 
+#### App Description
+**Activities:**
+Check status of your REPLICATING and STUCK rules here.
+All the ongoing transfers are listed here.
+List updates every few minutes.
+You can also click the refresh button to force-refresh the status.
+
+**Notifications (Under Development):**
+Here you can check all the past updates on your rules, when the transfers completed, and when they got stuck.
+This section is currently under development and will be working in the next stable release.
+
+**My Account**:
+The section lists all your accounts, and displays information about your connected servers and the certificate location.
+Press `Esc` key to exit.
+
 ## Getting Started with Development
 Fork the repository or clone it directly to run on your system.
 
