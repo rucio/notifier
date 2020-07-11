@@ -7,11 +7,34 @@
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/dev/electron?style=flat-square)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/express?style=flat-square)
 
-
-
 Rucio Notification Utility with a graphical user interface. This app uses React v16.13.1 and Electron v7.0.0
 
-## Getting Started
+## Description
+Notifier is a standalone desktop application to get updates on your Rules at Rucio instances.
+
+* **Rule Monitoring**: Monitor all your rule transfers like never before! 
+This lightweight utility helps you watch all your rules and their status. 
+The app sits in the systray of your system and gives you info about all your rules in a clcik.
+
+* **Mutli-Account Setup**: You can add multiple Rucio accounts whose rules you want to monitor in the app. 
+After adding your existing account(s), just sign-in with any valid account and the app will handle the rest.
+
+* **Transfer Monitoring**: Get the status of your ongoing transfers at RSEs, and check if they are in OK, REPLICATING, or STUCK state easily in a user friendly way.
+
+## Usage
+
+#### Connecting your Rucio Account
+
+After you start the app for the first time, you'll need to connect your Rucio account to the app.
+Simply click on __Add your Rucio account__ and setup a new account with your USERPASS credentials, and the server details.
+
+After setting up the account, you'll be able to log into the app using that account.
+
+#### Adding Multiple Rucio Accounts
+
+You can also set up multiple Rucio Accounts to see notifications from them on the app. Simply add more accounts from __Add your Rucio account__ utility from the Login screen and log in to the app using any added account.
+
+## Getting Started with Development
 Fork the repository or clone it directly to run on your system.
 
 ```BASH
@@ -38,18 +61,8 @@ If you wish to see how the app will behave post production, you will also need t
 $ npm run electron
 ```
 
-This will start Rucio Notifier inside of an Electron window. Any changes will be refleted live in the app.
-
-#### Connecting your Rucio Account
-
-After you start the app for the first time, you'll need to connect your Rucio account to the app.
-Simply click on __Add your Rucio account__ and setup a new account with your USERPASS credentials, and the server details.
-
-After setting up the account, you'll be able to log into the app using that account.
-
-#### Adding Multiple Rucio Accounts
-
-You can also set up multiple Rucio Accounts to see notifications from them on the app. Simply add more accounts from __Add your Rucio account__ utility from the Login screen and log in to the app using any added account.
+This will start Rucio Notifier inside of an Electron window.
+Any changes will be refleted live in the app.
 
 ## Troubleshooting
 
