@@ -7,10 +7,18 @@ const styles = {
   color: "#fffafa"
 };
 
+const buttonStyle={
+  display: "flex",
+  justifyContent: "center",
+  alignContent: "center",
+  fontFamily: "Cern",
+  fontWeight: 500
+}
+
 function LoginButton(props) {
   const { children, loading, ...rest } = props;
   return (
-    <Button {...rest}>
+    <Button style={buttonStyle} {...rest}>
       {children}
       {loading && (
         <CircularProgress style={styles} size={15} />
