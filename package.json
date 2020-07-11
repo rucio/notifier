@@ -11,7 +11,7 @@
     "email": "viveknigam.nigam3@gmail.com"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.2",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,14 +19,16 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "cors": "^2.8.5",
+    "electron-is-dev": "^1.2.0",
     "express": "^4.17.1",
     "js-time-diff": "^1.0.0",
     "react": "^16.13.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "electron-is-dev": "^1.2.0"
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "PORT=3003 react-scripts start",
