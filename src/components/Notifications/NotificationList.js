@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
-import demoMessages from "./DemoMessages";
+//import demoMessages from "./DemoMessages";
 import MessageItem from "./MessageItem";
 import ReadAll from "./ReadAll";
-import IconButton from "@material-ui/core/IconButton"
-import ClearAll from "@material-ui/icons/ClearAll"
+import IconButton from "@material-ui/core/IconButton";
+import ClearAll from "@material-ui/icons/ClearAll";
+import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,13 +33,19 @@ const spanStyle = {
 
 export default function NotificationList(props) {
   const classes = useStyles();
-  const [messages, setMessages] = useState(demoMessages);
+  const dispatch = useDispatch();
+  const notifications = useSelector((state) => state);
 
-  function markRead(i) {
-    const newMessages = [...messages];
-    newMessages[i].read = true;
-    newMessages.splice(i, 1);
-    setMessages(newMessages);
+  function addNotification() {
+    dispatch({
+      type: "ADD",
+      id: 0,
+      primary: "Welcome to Rucio!",
+      secondary: "This is the notifications panel",
+      server: "rucio-dev-server",
+      nType: "message",
+      read: false,
+    });
   }
 
   return (
@@ -53,21 +60,23 @@ export default function NotificationList(props) {
         id="title"
       >
         <span style={spanStyle}>All Notifications</span>
-        <IconButton><ClearAll fontSize="small" /></IconButton>
+        <IconButton onClick={addNotification}>
+          <ClearAll fontSize="small" />
+        </IconButton>
       </div>
       <Grid id="notification-grid" className={classes.root}>
         <List dense={false} className={classes.item}>
-          {messages.length !== 0 ? (
-            messages.map((item, i) => (
+          {notifications.length !== 0 ? (
+            notifications.map((item, i) => (
               <MessageItem
-                key={item.id}
+                key={i}
                 primary={item.primary}
                 secondary={item.secondary}
                 server={item.server}
                 type={item.type}
                 status={item.status}
                 read={item.read}
-                onClick={(e) => markRead(i)}
+                onClick={(e) => dispatch({type: 'DELETE', index: i})}
               />
             ))
           ) : (
