@@ -15,7 +15,6 @@ function notificationReducer(state = notification, action) {
         status: action.status,
         read: false,
       });
-      console.log(newNotification);
       doNotify(action.primary)
       localStorage.setItem('notifications', JSON.stringify(newNotification))
       return newNotification;
