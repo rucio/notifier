@@ -1,4 +1,4 @@
-const notification = [];
+const notification = JSON.parse(localStorage.getItem('notifications'))
 
 function notificationReducer(state = notification, action) {
   switch (action.type) {
@@ -14,6 +14,7 @@ function notificationReducer(state = notification, action) {
         read: false,
       });
       console.log(newNotification);
+      localStorage.setItem('notifications', JSON.stringify(newNotification))
       return newNotification;
 
     case "DELETE":
@@ -21,10 +22,13 @@ function notificationReducer(state = notification, action) {
       newNotificationState[action.index].read = true;
       newNotificationState.splice(action.id, 1);
       console.log(newNotificationState);
+      localStorage.setItem('notifications', JSON.stringify(newNotificationState))
       return newNotificationState;
 
     case "DELETE_ALL":
-      return [];
+      localStorage.setItem("notifications", JSON.stringify([]));
+      const emptyNotificationState = []
+      return emptyNotificationState
 
     default:
       return state;

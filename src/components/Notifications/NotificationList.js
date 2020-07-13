@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
-//import demoMessages from "./DemoMessages";
 import MessageItem from "./MessageItem";
 import ReadAll from "./ReadAll";
 import IconButton from "@material-ui/core/IconButton";
@@ -36,15 +35,9 @@ export default function NotificationList(props) {
   const dispatch = useDispatch();
   const notifications = useSelector((state) => state);
 
-  function addNotification() {
+  function clearAllNotifications() {
     dispatch({
-      type: "ADD",
-      id: 0,
-      primary: "Welcome to Rucio!",
-      secondary: "This is the notifications panel",
-      server: "rucio-dev-server",
-      nType: "message",
-      read: false,
+      type: "DELETE_ALL",
     });
   }
 
@@ -60,7 +53,7 @@ export default function NotificationList(props) {
         id="title"
       >
         <span style={spanStyle}>All Notifications</span>
-        <IconButton onClick={addNotification}>
+        <IconButton onClick={clearAllNotifications}>
           <ClearAll fontSize="small" />
         </IconButton>
       </div>
@@ -76,7 +69,7 @@ export default function NotificationList(props) {
                 type={item.type}
                 status={item.status}
                 read={item.read}
-                onClick={(e) => dispatch({type: 'DELETE', index: i})}
+                onClick={() => dispatch({ type: "DELETE", index: i })}
               />
             ))
           ) : (
