@@ -10,6 +10,7 @@ function notificationReducer(state = notification, action) {
         secondary: action.secondary,
         server: action.server,
         type: action.nType,
+        status: action.status,
         read: false,
       });
       console.log(newNotification);
