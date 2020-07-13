@@ -22,7 +22,7 @@ function notificationReducer(state = notification, action) {
     case "DELETE":
       const newNotificationState = [...state];
       newNotificationState[action.index].read = true;
-      newNotificationState.splice(action.id, 1);
+      newNotificationState.splice(action.index, 1);
       console.log(newNotificationState);
       localStorage.setItem('notifications', JSON.stringify(newNotificationState))
       return newNotificationState;
