@@ -12,6 +12,8 @@ import { useAuth } from "./AuthContext";
 import { saveUser, authTokensPresent } from "../Utils/Logic/User";
 import AlertSnackbar from "../Utils/Design/Snackbar";
 import { Button } from "@material-ui/core";
+import { dispatchServerStatus } from "../Notifications/Reducers/DispatchNotifications";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -61,6 +63,7 @@ function Login() {
   const [loading, setLoading] = useState();
   const [status, setStatus] = useState(0);
   const { setAuthtoken } = useAuth();
+  const dispatch = useDispatch();
 
   /**
    * Validates the form responses to prevent empty required fields
@@ -115,6 +118,9 @@ function Login() {
           saveUser(account, username, password);
           updateStatus(200);
           setTimeout(() => setLoggedin(true), 2000);
+
+          //Sending Server Status Notification
+          dispatchServerStatus(dispatch)
         }
       })
       .catch((error) => {
