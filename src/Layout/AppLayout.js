@@ -8,9 +8,6 @@ import {
   authTokensPresent,
 } from "../components/Utils/Logic/User";
 import { useAuth } from "../components/Authentication/AuthContext";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import notificationReducer from "../components/Notifications/Reducers/NotificationReducer";
 
 function AppLayout() {
   const { setAuthtoken } = useAuth();
@@ -27,15 +24,11 @@ function AppLayout() {
     }
   }, [setAuthtoken]);
 
-  const store = createStore(notificationReducer);
-
   return (
-    <Provider store={store}>
-      <div className="container-small">
-        <Header />
-        <Navbar />
-      </div>
-    </Provider>
+    <div className="container-small">
+      <Header />
+      <Navbar />
+    </div>
   );
 }
 
