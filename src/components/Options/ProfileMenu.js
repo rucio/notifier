@@ -49,6 +49,7 @@ function ProfileMenu() {
     purgeUser();
     purgeAllTokens();
     setAuthtoken(false);
+    localStorage.setItem('notifications', JSON.stringify([]))
     return <Redirect to="/" />;
   }
 
