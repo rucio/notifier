@@ -1,3 +1,5 @@
+import { doNotify } from "../NativeNotifications/AlertNotification";
+
 const notification = JSON.parse(localStorage.getItem('notifications'))
 
 function notificationReducer(state = notification, action) {
@@ -14,6 +16,7 @@ function notificationReducer(state = notification, action) {
         read: false,
       });
       console.log(newNotification);
+      doNotify(action.primary)
       localStorage.setItem('notifications', JSON.stringify(newNotification))
       return newNotification;
 
