@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom";
 import { useAuth } from "../Authentication/AuthContext";
 import { purgeUser, purgeAllTokens } from "../Utils/Logic/User";
 import MyAccount from "./MyAccount";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -26,6 +27,7 @@ function ProfileMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { setAuthtoken } = useAuth();
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -44,12 +46,16 @@ function ProfileMenu() {
     setOpen(false)
   }
 
+  function cleanNotificationStore() {
+    dispatch({ type: "DELETE_ALL" });
+  }
+
   function handleLogout() {
     console.log("Attempting Logout...");
     purgeUser();
     purgeAllTokens();
     setAuthtoken(false);
-    localStorage.setItem('notifications', JSON.stringify([]))
+    cleanNotificationStore();
     return <Redirect to="/" />;
   }
 
