@@ -3,5 +3,5 @@
  */
 export function createNotificationStore(){
     if(!localStorage.getItem('notifications'))
-        localStorage.setItem('notifications', []);
+        localStorage.setItem('notifications', JSON.stringify([]));
 }
