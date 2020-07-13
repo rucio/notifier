@@ -5,6 +5,7 @@ import CertDetails from "./FormPages/CertDetails";
 import Success from "./FormPages/Success";
 import { addServer } from "../Utils/Logic/Servers";
 import { addNewAccount, saveCertLocation } from "../Utils/Logic/User";
+import { createNotificationStore } from "../Utils/Logic/Notifications";
 
 function AddAccount() {
   const [step, setStep] = useState(1);
@@ -30,6 +31,7 @@ function AddAccount() {
     addNewAccount(account, username, password);
     addServer(serverName, hostIP, authIP);
     saveCertLocation(certlocation);
+    createNotificationStore();
   }
 
   switch (step) {
