@@ -2,7 +2,7 @@
   "name": "rucio-notifier",
   "description": "Rucio Notifier Application",
   "homepage": "./",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "main": "public/electron.js",
   "license": "Apache-2.0",
