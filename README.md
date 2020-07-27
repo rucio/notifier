@@ -42,6 +42,7 @@ Building from source requires `npm > 6.0`
 Inside the root directory run the following command from the terminal
 
 ```BASH
+$ npm install
 $ npm run electron-pack
 ```
 
