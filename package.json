@@ -10,6 +10,10 @@
     "name": "Vivek Nigam",
     "email": "viveknigam.nigam3@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rucio/notifier.git"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -78,7 +82,7 @@
         "snap",
         "AppImage"
       ],
-      "category": "Utility",
+      "category": "Utilities",
       "icon": "build/icons",
       "executableName": "rucio-notifier"
     },
@@ -87,7 +91,7 @@
         "default",
         "dmg"
       ],
-      "category": "Utilities",
+      "category": "public.app-category.utilities",
       "icon": "build/icons",
       "type": "distribution"
     },
