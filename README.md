@@ -22,6 +22,32 @@ After adding your existing account(s), just sign-in with any valid account and t
 
 * **Transfer Monitoring**: Get the status of your ongoing transfers at RSEs, and check if they are in OK, REPLICATING, or STUCK state easily in a user friendly way.
 
+## Installation
+
+### Download the binaries
+
+Binaries are available from the following links. Download the files and install as usual.
+
+**LINUX**
+* [.deb](https://rucionotifier.imfast.io/rucio-notifier_0.2.0_amd64.deb) for Debian/Ubuntu. 
+* [.rpm](https://rucionotifier.imfast.io/rucio-notifier-0.2.0.x86_64.rpm) for  RHEL/CentOS 
+* [.AppImage](https://rucionotifier.imfast.io/rucio-notifier-0.2.0.AppImage) for other linux systems
+
+Binaries for **MacOS** shall be available soon.
+
+### Build from source
+
+Building from source requires `npm > 6.0`
+
+Inside the root directory run the following command from the terminal
+
+```BASH
+$ npm run electron-pack
+```
+
+The above script will build the app and place the binaries inside a `dist` folder in the root directory. 
+Then execute or install through the binaries as usual.
+
 ## Usage
 
 #### Connecting your Rucio Account
@@ -36,6 +62,7 @@ After setting up the account, you'll be able to log into the app using that acco
 You can also set up multiple Rucio Accounts to see notifications from them on the app. Simply add more accounts from __Add your Rucio account__ utility from the Login screen and log in to the app using any added account.
 
 #### App Description
+
 **Activities:**
 Check status of your REPLICATING and STUCK rules here.
 All the ongoing transfers are listed here.
