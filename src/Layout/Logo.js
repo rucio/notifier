@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react";
 import logoImage from "./ruciosq.png";
+import { makeStyles } from "@material-ui/core";
 
-const imgStyle = {
+const useStyles = makeStyles({
+  root: {
     position: "relative",
     marginTop: 8,
     height: 30,
@@ -9,10 +11,13 @@ const imgStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
-  };
-  
+    filter: `drop-shadow(0 0 0.75rem grey)`
+  },
+});
+
 function Logo() {
-    return <img src={logoImage} alt="logo" style={imgStyle} />;
+  const classes = useStyles();
+  return <img src={logoImage} alt="logo" className={classes.root} />;
 }
 
-export default Logo
+export default Logo;

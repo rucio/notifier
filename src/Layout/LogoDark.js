@@ -1,5 +1,5 @@
 import React from 'react'
-import darkLogoImage from "./ruciosq_dark.png";
+import darkLogoImage from "./rucioblack.svg";
 
 const imgStyle = {
     position: "relative",
