@@ -35,7 +35,7 @@ app.on("ready", () => {
 });
 
 const createTray = () => {
-  var iconPath = path.join(__dirname, "icons", "48x48.png");
+  var iconPath = path.join(__dirname, "icons", "icon@2x.png");
   let trayIcon = nativeImage.createFromPath(iconPath);
   tray = new Tray(trayIcon);
   const contextMenu = Menu.buildFromTemplate([
@@ -134,7 +134,7 @@ const showWindow = (target) => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
   window.loadURL(isDev
-    ? 'http://localhost:3003/#/app/' + target
+    ? 'http://localhost:3004/#/app/' + target
     : 'http://localhost:3004/#/app/' + target);
   window.show();
 };
