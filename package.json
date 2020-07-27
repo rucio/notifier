@@ -71,6 +71,17 @@
       "server/**/*",
       "node_modules/**/*"
     ],
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "snap",
+        "AppImage"
+      ],
+      "category": "Utility",
+      "icon": "build/icons",
+      "executableName": "Rucio Notifier"
+    },
     "directories": {
       "buildResources": "assets"
     }
