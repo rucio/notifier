@@ -35,7 +35,7 @@ app.on("ready", () => {
 });
 
 const createTray = () => {
-  var iconPath = path.join(__dirname, "rucioSqLogo.png");
+  var iconPath = path.join(__dirname, "icons", "48x48.png");
   let trayIcon = nativeImage.createFromPath(iconPath);
   tray = new Tray(trayIcon);
   const contextMenu = Menu.buildFromTemplate([
