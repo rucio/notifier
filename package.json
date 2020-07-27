@@ -80,7 +80,16 @@
       ],
       "category": "Utility",
       "icon": "build/icons",
-      "executableName": "Rucio Notifier"
+      "executableName": "rucio-notifier"
+    },
+    "mac": {
+      "target": [
+        "default",
+        "dmg"
+      ],
+      "category": "Utilities",
+      "icon": "build/icons",
+      "type": "distribution"
     },
     "directories": {
       "buildResources": "assets"
