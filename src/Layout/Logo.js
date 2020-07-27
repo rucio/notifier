@@ -1,5 +1,5 @@
 import React from "react";
-import logoImage from "./ruciosq.png";
+import logoImage from "./ruciocontourwhite.svg";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({

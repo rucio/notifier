@@ -74,9 +74,11 @@ const createTray = () => {
     },
   ]);
   tray.setToolTip("Rucio Notifier");
+
   tray.on("click", function (event) {
     toggleWindow();
   });
+
   tray.setContextMenu(contextMenu);
 };
 
