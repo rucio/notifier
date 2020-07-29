@@ -37,7 +37,7 @@ Binaries for **MacOS** shall be available soon.
 
 ### Build from source
 
-Building from source requires `npm > 6.0`
+Building from source requires `npm > 6.0` and `node` LTS or Current Release
 
 Inside the root directory run the following command from the terminal
 
@@ -48,6 +48,10 @@ $ npm run electron-pack
 
 The above script will build the app and place the binaries inside a `dist` folder in the root directory. 
 Then execute or install through the binaries as usual.
+
+Other Available Build Scripts:
+* `npm run clean-build-safe` : This will just clean the `dist` folder and build again.
+* `npm run clean-build` :  This will reset EVERYTHING (including `node_modules` and `dist`) and then build again.
 
 ## Usage
 
