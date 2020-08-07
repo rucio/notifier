@@ -82,6 +82,12 @@ This section is currently under development and will be working in the next stab
 The section lists all your accounts, and displays information about your connected servers and the certificate location.
 Press `Esc` key to exit.
 
+## Documentation
+
+* [User Documentation](https://github.com/rucio/notifier/tree/master/docs) for Rucio Notifier - Includes client installation instructions and usage guide.
+
+* Developer Documentation __(Coming Soon)__
+
 ## Getting Started with Development
 Fork the repository or clone it directly to run on your system.
 
