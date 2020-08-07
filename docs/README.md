@@ -16,7 +16,6 @@
         * [Adding your Rucio Account](#adding-your-rucio-account)
         * [Multi account Setup](#multi-account-setup)
       * [Viewing Rule Activity](#viewing-rule-activity)
-      * [Getting Rule Info](#getting-rule-info)
       * [Watching Notifications](#watching-notifications)
       * [Adding and Removing Accounts](#adding-and-removing-accounts)
    * [Support](#support)
@@ -90,13 +89,49 @@ A future release shall provide the support for other identities like X509 certif
 ### Initial Setup
 When setting up the app for the first time, you will have to add your Rucio account to the app. This is similar to having your own `rucio-config.cfg` file inside the app, but instead of editing a file, the app guides you through steps to set attributes for each field.
 
+<p align="center">
+    <img alt="Sign-In" src="https://user-images.githubusercontent.com/30192068/89635387-8aacee00-d8c4-11ea-8977-4d2f87bbb4d3.png" width=100% />
+</p>
+
 #### Adding your Rucio Account
+To add your existing Rucio Account to the app, just open the app and click on the __Add Account Button__ on the landing screen and setup a new account with your USERPASS credentials, and the server details.
+
+After setting up the account, you'll be able to log into the app using that account.
+
 #### Multi account Setup
 
+You can also set up multiple Rucio Accounts to see notifications from them on the app. Simply add more accounts from __Add your Rucio account__ utility from the Login screen and log in to the app using any added account.
+
 ### Viewing Rule Activity
-### Getting Rule Info
+<p align="center">
+    <img alt="recent-activity" src="https://user-images.githubusercontent.com/30192068/89638912-46245100-d8ca-11ea-9da2-f0640da21265.png" width=100% />
+</p>
+
+Click on the Activity tab to watch all your Replicating Rules. Clicking on any RULE Card expands it to reveal more details about it. The rule status is refreshed every few minutes, to forcefully fetch the rule status from all servers, click on the Refresh Button on the right of the Recent Activity Title.
+
+<p align="center">
+    <img alt="all-rules" src="https://user-images.githubusercontent.com/30192068/89639789-d9aa5180-d8cb-11ea-953c-89c4f1ea600a.png" width=100% />
+</p>
+
+Click on the __See All Rules__ Button at the bottom to view all the rules from all the connected servers and their details. 
+The completed transfers are shown here with an __OK__ tag in green color. 
+The __STUCK__ locks are shown in red and the __REPLICATING__ locks are shown in orange. 
+This color coding is the same which Rucio uses.
+
 ### Watching Notifications
+<p align="center">
+    <img alt="notification" src="https://user-images.githubusercontent.com/30192068/89640168-a0beac80-d8cc-11ea-92b5-ac6e9c8cf604.png" width=100% />
+</p>
+
+When a server is connected or fails to connect due to any error, a notification is received for the same which can be monitored here from the Notification Tab. 
+The app also provides the support for __native notifications__ which can be received even when the app is not focussed or is running in the background.
+
 ### Adding and Removing Accounts
+<p align="center">
+    <img alt="accounts" src="https://user-images.githubusercontent.com/30192068/89640605-8b964d80-d8cd-11ea-9069-3f44f08c355f.png" width=100% />
+</p>
+
+Inside account circle icon menu there is an the __My Account__ option, which opens the Accounts window. Here you can __Add a new account__ to the app or delete the existing account. You can also see the server status here.
 
 ## Support
 If you are looking for support, join us on our Slack [#support](https://rucio.slack.com/messages/#support) channel, or send an email to our public mailing list [rucio-users@googlegroups.com](mailto:rucio-users@googlegroups.com).
