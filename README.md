@@ -30,9 +30,9 @@ After adding your existing account(s), just sign-in with any valid account and t
 Binaries are available from the following links. Download the files and install as usual.
 
 **LINUX**
-* [.deb](https://rucionotifier.imfast.io/rucio-notifier_0.2.0_amd64.deb) for Debian/Ubuntu. 
-* [.rpm](https://rucionotifier.imfast.io/rucio-notifier-0.2.0.x86_64.rpm) for  RHEL/CentOS 
-* [.AppImage](https://rucionotifier.imfast.io/rucio-notifier-0.2.0.AppImage) for other linux systems
+* [.deb](https://rucionotifier.imfast.io/rucio-notifier_0.2.1_amd64.deb) for Debian/Ubuntu. 
+* [.rpm](https://rucionotifier.imfast.io/rucio-notifier-0.2.1.x86_64.rpm) for  RHEL/CentOS 
+* [.AppImage](https://rucionotifier.imfast.io/rucio-notifier-0.2.1.AppImage) for other linux systems
 
 Binaries for **MacOS** shall be available soon.
 
