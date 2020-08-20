@@ -51,14 +51,14 @@ const iconStyle = {
 
 const messageStyle = {
   primary: {
-    fontFamily: ["Cern", "sans-serif"].join(","),
+    fontFamily: ["Inter", "sans-serif"].join(","),
     color: "000000",
     opacity: 1,
     fontSize: 14,
     fontWeight: 400,
   },
   secondary: {
-    fontFamily: ["Cern", "sans-serif"].join(","),
+    fontFamily: ["Inter", "sans-serif"].join(","),
     color: "000000",
     opacity: 0.6,
     fontSize: 12,

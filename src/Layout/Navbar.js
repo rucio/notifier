@@ -25,7 +25,7 @@ const AntTab = withStyles((theme) => ({
     color: "#ffffff",
     opacity: 0.65,
     marginRight: theme.spacing(4),
-    fontFamily: ["Cern", "sans-serif"].join(","),
+    fontFamily: ["Inter", "sans-serif"].join(","),
     fontSize: 14,
     "&:hover": {
       color: "lightblue",
