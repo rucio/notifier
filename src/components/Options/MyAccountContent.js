@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
   title: {
     width: 260,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 20,
     fontWeight: 500,
     color: "#000000",
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontSize: 12,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     opacity: 0.6,
     paddingTop: 5,
   },
@@ -39,7 +39,7 @@ function MyAccountContent() {
         style={{
           color: grey[600],
           fontSize: 12,
-          fontFamily: "Cern",
+          fontFamily: "Inter",
           fontWeight: 500,
           paddingBottom: 10,
         }}

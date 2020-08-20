@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     marginTop: theme.spacing(5),
     display: "flex",
     flexDirection: "column",
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   title: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 100,
     fontSize: 24,
   },
@@ -37,17 +37,17 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     margin: theme.spacing(2, 0, 1),
   },
   buttonPrimary: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 12,
     fontWeight: 600,
   },
   text: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 400,
     fontSize: 12,
     opacity: 0.6,

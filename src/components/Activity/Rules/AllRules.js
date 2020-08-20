@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "inherit",
   },
   subheader: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
     color: "#3e55ab",
   },

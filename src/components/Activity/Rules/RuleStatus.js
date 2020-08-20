@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     display: "flex",
     alignContent: "center",
     justifyContent: "space-between",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 600,
     fontSize: 11,
   },

@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   root: {
     height: "auto",
     padding: 5,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     display: "flex",
     justifyContent: "space-between",
     marginBottom: 5,
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   root2: {
     height: "auto",
     padding: 5,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     display: "flex",
     flexDirection: "column",
     marginBottom: 5,

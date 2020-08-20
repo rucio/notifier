@@ -9,7 +9,7 @@ import Preferences from "./SettingsContent";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     color: "#3e55ab",
     fontWeight: 700,
     fontSize: 24,

@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     fontWeight: 400,
   },

@@ -22,17 +22,17 @@ const useStyles = makeStyles({
     marginTop: 12,
   },
   details: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 11,
     color: grey[800],
   },
   id: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 11,
     color: grey[800],
   },
   names: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
     fontSize: 16,
   },

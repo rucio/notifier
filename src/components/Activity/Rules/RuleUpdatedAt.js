@@ -6,7 +6,7 @@ import TimeDiff from "js-time-diff"; //es6
 
 const useStyles = makeStyles({
   root: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 11,
     color: grey[800],
   },

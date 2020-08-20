@@ -11,7 +11,7 @@ const buttonStyle={
   display: "flex",
   justifyContent: "center",
   alignContent: "center",
-  fontFamily: "Cern",
+  fontFamily: "Inter",
   fontWeight: 500
 }
 

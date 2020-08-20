@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16
   },
   title: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     color: "#3e55ab",
     fontWeight: 700,
     fontSize: 24,

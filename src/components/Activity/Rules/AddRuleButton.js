@@ -5,7 +5,7 @@ import VisibilitySharpIcon from '@material-ui/icons/VisibilitySharp';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     color: "#000000",
     textTransform: "none",

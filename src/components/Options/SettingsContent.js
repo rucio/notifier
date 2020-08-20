@@ -5,7 +5,7 @@ import packageJson from '../../../package.json';
 const useStyles = makeStyles((theme) => ({
   root:{
     width: "100%",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 12,
     color: "#000000",
     opacity: 0.6,

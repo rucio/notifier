@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 5
   },
   text: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 16,
     fontWeight: 600,
     color: "#000000",

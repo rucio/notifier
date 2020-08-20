@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 16,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     color: grey[600],
     fontWeight: 500,
   },
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
   },
   accountName: {
     fontSize: 14,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
     color: grey[900],
   },

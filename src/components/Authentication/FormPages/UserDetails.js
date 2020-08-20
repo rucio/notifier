@@ -10,19 +10,19 @@ import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     marginTop: theme.spacing(5),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
   title: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 100,
     fontSize: 24,
   },
   subtitle: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 400,
     fontSize: 12,
     color: "#000000",
@@ -39,12 +39,12 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   buttonPrimary: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     fontWeight: 600,
   },
   buttonSecondary: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     fontWeight: 400,
     marginLeft: 5,

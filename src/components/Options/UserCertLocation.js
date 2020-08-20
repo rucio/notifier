@@ -11,13 +11,13 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 16,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     color: grey[600],
     fontWeight: 500,
     paddingBottom: 15
   },
   subtitle:{
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 13,
     color: grey[800],
     paddingBottom: 15
