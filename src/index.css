@@ -1,31 +1,35 @@
 @font-face {
-  font-family: "Cern";
-  src: url("./fonts/Cern-Light.woff") format("woff"), /* Modern Browsers */
-    url("./fonts/Cern-Light.woff2") format("woff2"); /* Modern Browsers */
+  font-family: "Inter";
+  font: "Inter Light";
+  src: url("./fonts/Inter-Light.woff") format("woff"),
+    /* Modern Browsers */ url("./fonts/Inter-Light.woff2") format("woff2"); /* Modern Browsers */
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Cern";
-  src: url("./fonts/Cern.woff") format("woff"), /* Modern Browsers */
-    url("./fonts/Cern.woff2") format("woff2"); /* Modern Browsers */
+  font-family: "Inter";
+  font: "Inter Regular";
+  src: url("./fonts/Inter-Regular.woff") format("woff"),
+    /* Modern Browsers */ url("./fonts/Inter-Regular.woff2") format("woff2"); /* Modern Browsers */
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Cern";
-  src: url("./fonts/Cern-Medium.woff") format("woff"), /* Modern Browsers */
-    url("./fonts/Cern-Medium.woff2") format("woff2"); /* Modern Browsers */
+  font-family: "Inter";
+  font: "Inter Medium";
+  src: url("./fonts/Inter-Medium.woff") format("woff"),
+    /* Modern Browsers */ url("./fonts/Inter-Medium.woff2") format("woff2"); /* Modern Browsers */
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Cern";
-  src: url("./fonts/Cern-Bold.woff") format("woff"), /* Modern Browsers */
-    url("./fonts/Cern-Bold.woff2") format("woff2"); /* Modern Browsers */
+  font-family: "Inter";
+  font: "Inter Bold";
+  src: url("./fonts/Inter-Bold.woff") format("woff"),
+    /* Modern Browsers */ url("./fonts/Inter-Bold.woff2") format("woff2"); /* Modern Browsers */
   font-weight: 600;
   font-style: normal;
 }
