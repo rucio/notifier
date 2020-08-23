@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://rucionotifier.imfast.io/" />
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/89623404-2aad4c00-d8b2-11ea-81c8-656cdbb0645a.png" width=100% />
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90971864-76f2c000-e531-11ea-903b-12143b241dd2.png" width=100% />
 </p>
 
 # notifier
