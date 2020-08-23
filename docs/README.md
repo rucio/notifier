@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/89623815-e7071200-d8b2-11ea-89df-0a63d09339c1.png" width=100% />
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90971879-9a1d6f80-e531-11ea-94cd-5667d7621afe.png" width=100% />
 </p>
 
 # Table of Contents
