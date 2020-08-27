@@ -14,10 +14,6 @@ A system-tray utility to monitor all your transfers at multiple Rucio instances 
 ## Description
 Notifier is a standalone desktop application to get updates on your Rules at Rucio instances.
 
-<p align="center">
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/91484726-54f99480-e8c7-11ea-87ee-3334184cbf21.png" width=100% />
-</p>
-
 * **Rule Monitoring**: Monitor all your rule transfers like never before! 
 This lightweight utility helps you watch all your rules and their status. 
 The app sits in the systray of your system and gives you info about all your rules in a clcik.
