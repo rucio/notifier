@@ -1,4 +1,11 @@
-const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Tray,
+  Menu,
+  nativeImage,
+} = require("electron");
 const path = require("path");
 
 let tray = undefined;
@@ -8,13 +15,13 @@ const os = require("os");
 const platforms = {
   WINDOWS: "WINDOWS",
   MAC: "MAC",
-  LINUX: "LINUX"
+  LINUX: "LINUX",
 };
 
 const platformsNames = {
   win32: platforms.WINDOWS,
   darwin: platforms.MAC,
-  linux: platforms.LINUX
+  linux: platforms.LINUX,
 };
 
 const currentPlatform = platformsNames[os.platform()];
@@ -30,31 +37,41 @@ const createTray = () => {
   tray = new Tray(trayIcon);
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: "Rucio",
+      label: "Open App",
       click: () => {
-        showWindow();
-      }
+        showWindow("activity");
+      },
     },
     {
       label: "Separator",
-      type: "separator"
+      type: "separator",
     },
     {
-      label: "Help Centre",
+      label: "Show Activity",
       click: () => {
-        showHelp();
-      }
+        showWindow("activity");
+      },
+    },
+    {
+      label: "Notifications",
+      click: () => {
+        showWindow("notifications");
+      },
+    },
+    {
+      label: "Separator",
+      type: "separator",
     },
     {
       label: "Quit",
       click: () => {
         window.destroy();
         tray.destroy();
-      }
-    }
+      },
+    },
   ]);
-  tray.setToolTip("Rucio");
-  tray.on("click", function(event) {
+  tray.setToolTip("Rucio Notifier");
+  tray.on("click", function (event) {
     toggleWindow();
   });
   tray.setContextMenu(contextMenu);
@@ -64,7 +81,7 @@ const getWindowPosition = () => {
   const windowBounds = window.getBounds();
   const trayBounds = tray.getBounds();
 
-  if (currentPlatform != "LINUX") {
+  if (currentPlatform !== "LINUX") {
     // Center window horizontally below the tray icon
     const x = Math.round(
       trayBounds.x - trayBounds.width / 2 + windowBounds.width / 2 - 320
@@ -92,34 +109,28 @@ const createWindow = () => {
     skipTaskbar: true,
     scrollable: false,
     backgroundColor: "#fffafa",
+    useContentSize: true,
     webPreferences: {
-      backgroundThrottling: false
-    }
+      backgroundThrottling: false,
+    },
   });
 
   // Hide the window when it loses focus
-   window.on('blur', () => {
-     if (!window.webContents.isDevToolsOpened()) {
-       window.hide()
-     }
-   })
+  window.on("blur", () => {
+    if (!window.webContents.isDevToolsOpened()) {
+      window.hide();
+    }
+  });
 };
 
 const toggleWindow = () => {
   window.isVisible() ? window.hide() : showWindow();
 };
 
-const showWindow = () => {
+const showWindow = (target) => {
   const position = getWindowPosition();
   window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3001');
-  window.show();
-};
-
-const showHelp = () => {
-  const position = getWindowPosition();
-  window.setPosition(position.x, position.y, false);
-  window.loadURL('http://localhost:3001');
+  window.loadURL("http://localhost:3003/app/" + target);
   window.show();
 };
 

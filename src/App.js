@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { HashRouter as Router, Route } from "react-router-dom";
+import AppLayout from "./Layout/AppLayout";
+import PrivateRoute from "./components/Authentication/PrivateRoute";
+import Login from "./components/Authentication/Login";
+import { AuthContext } from "./components/Authentication/AuthContext";
+import "./App.css";
+import { authTokensPresent } from "./components/Utils/Logic/User";
+import AddAccount from "./components/Authentication/AddAccount";
 
 function App() {
+  const existingToken = authTokensPresent();
+  const [authtoken, setAuthtoken] = useState(existingToken);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={{ authtoken, setAuthtoken }}>
+      <Router>
+        <div className="container-small">
+          <Route exact path="/" component={Login} />
+          <Route exact path="/adduser" component={AddAccount} />
+          <PrivateRoute path="/app" component={AppLayout} />
+        </div>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 
