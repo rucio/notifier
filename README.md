@@ -1,5 +1,6 @@
 <p align="center">
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/89623404-2aad4c00-d8b2-11ea-81c8-656cdbb0645a.png" width=100% />
+    <a href="https://rucionotifier.imfast.io/" />
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90971864-76f2c000-e531-11ea-903b-12143b241dd2.png" width=100% />
 </p>
 
 # notifier
@@ -8,10 +9,14 @@
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/dev/electron?style=flat-square)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/express?style=flat-square)
 
-Rucio Notification Utility with a graphical user interface. This app uses React v16.13.1 and Electron v7.0.0
+A system-tray utility to monitor all your transfers at multiple Rucio instances and get notified about them.
 
 ## Description
 Notifier is a standalone desktop application to get updates on your Rules at Rucio instances.
+
+<p align="center">
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/91706961-c45bd680-eb9c-11ea-8456-0761d2fd88a9.png" width=100% />
+</p>
 
 * **Rule Monitoring**: Monitor all your rule transfers like never before! 
 This lightweight utility helps you watch all your rules and their status. 
@@ -29,9 +34,9 @@ After adding your existing account(s), just sign-in with any valid account and t
 Binaries are available from the following links. Download the files and install as usual.
 
 **LINUX**
-* [.deb](https://rucionotifier.imfast.io/rucio-notifier_0.2.0_amd64.deb) for Debian/Ubuntu. 
-* [.rpm](https://rucionotifier.imfast.io/rucio-notifier-0.2.0.x86_64.rpm) for  RHEL/CentOS 
-* [.AppImage](https://rucionotifier.imfast.io/rucio-notifier-0.2.0.AppImage) for other linux systems
+* [.deb](https://rucionotifier.imfast.io/rucio-notifier_0.2.1_amd64.deb) for Debian/Ubuntu. 
+* [.rpm](https://rucionotifier.imfast.io/rucio-notifier-0.2.1.x86_64.rpm) for  RHEL/CentOS 
+* [.AppImage](https://rucionotifier.imfast.io/rucio-notifier-0.2.1.AppImage) for other linux systems
 
 Binaries for **MacOS** shall be available soon.
 
