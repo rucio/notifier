@@ -1,5 +1,4 @@
 <p align="center">
-    <a href="https://rucionotifier.imfast.io/" />
     <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90971864-76f2c000-e531-11ea-903b-12143b241dd2.png" width=100% />
 </p>
 
