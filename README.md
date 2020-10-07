@@ -31,14 +31,9 @@ After adding your existing account(s), just sign-in with any valid account and t
 
 ### Download the binaries
 
-Binaries are available from the following links. Download the files and install as usual.
+Binaries are available from [Releases](https://github.com/rucio/notifier/releases). Download the files and install as usual.
 
-**LINUX**
-* [.deb](https://rucionotifier.imfast.io/rucio-notifier_0.2.1_amd64.deb) for Debian/Ubuntu. 
-* [.rpm](https://rucionotifier.imfast.io/rucio-notifier-0.2.1.x86_64.rpm) for  RHEL/CentOS 
-* [.AppImage](https://rucionotifier.imfast.io/rucio-notifier-0.2.1.AppImage) for other linux systems
-
-Binaries for **MacOS** shall be available soon.
+Rucio Notifier is currently available for Linux and Windows. Binaries for **MacOS** shall be available soon.
 
 ### Build from source
 
@@ -55,8 +50,11 @@ The above script will build the app and place the binaries inside a `dist` folde
 Then execute or install through the binaries as usual.
 
 Other Available Build Scripts:
-* `npm run clean-build-safe` : This will just clean the `dist` folder and build again.
-* `npm run clean-build` :  This will reset EVERYTHING (including `node_modules` and `dist`) and then build again.
+
+|Script | Description |
+| --------- | ----------------- |
+| `npm run clean-build-safe` | This will just clean the `dist` folder and build again. |
+| `npm run clean-build` |  This will reset EVERYTHING (including `node_modules` and `dist`) and then build again. |
 
 ## Usage
 
@@ -135,6 +133,5 @@ $ npm install && npm start
 
 ## Extra Notes
 
-This project is under development as part of the Google Summer of Code 2020 project for CERN-HSF's Rucio.
-It is not yet ready for production release.
+This project was started as part of the Google Summer of Code 2020 project for CERN-HSF's Rucio.  
 This software is tested on Ubuntu 18.04 LTS.
