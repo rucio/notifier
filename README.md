@@ -4,9 +4,7 @@
 
 # notifier
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/notifier?style=flat-square)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/react?style=flat-square)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/dev/electron?style=flat-square)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/express?style=flat-square)
+
 
 A system-tray utility to monitor all your transfers at multiple Rucio instances and get notified about them.
 
