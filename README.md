@@ -1,13 +1,10 @@
 <p align="center">
-    <a href="https://rucionotifier.imfast.io/" />
     <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90971864-76f2c000-e531-11ea-903b-12143b241dd2.png" width=100% />
 </p>
 
 # notifier
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/notifier?style=flat-square)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/react?style=flat-square)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/dev/electron?style=flat-square)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/notifier/express?style=flat-square)
+
 
 A system-tray utility to monitor all your transfers at multiple Rucio instances and get notified about them.
 
