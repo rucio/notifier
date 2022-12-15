@@ -24,7 +24,7 @@
     "axios": "^0.21.2",
     "cors": "^2.8.5",
     "electron-is-dev": "^1.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "js-time-diff": "^1.0.0",
     "nan": "2.14.1",
     "react": "^16.13.1",
