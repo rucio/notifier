@@ -1,3 +1,7 @@
+## :warning: **rucio/notifier is not maintained**
+
+This repository is not maintained and has been archived.
+
 <p align="center">
     <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90971864-76f2c000-e531-11ea-903b-12143b241dd2.png" width=100% />
 </p>
